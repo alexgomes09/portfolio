@@ -10,7 +10,7 @@
   <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
   <?php echo css('assets/css/main.css') ?>
-  <?php echo css('panel/assets/css/fontawesome.css') ?>
+  <?php echo css('panel/assets/css/fontawesome4.css') ?>
 
 </head>
 <body>

@@ -21,10 +21,10 @@
 
     <div class="nextprev cf" role="navigation">
       <?php if($prev = $page->prevVisible()): ?>
-        <a class="prev" href="<?php echo $prev->url() ?>"><span class="fa fa-arrow-left"></span> previous project</a>
+        <a class="prev" href="<?php echo $prev->url() ?>"><i class="fa fa-arrow-left"></i> previous project</a>
       <?php endif ?>
       <?php if($next = $page->nextVisible()): ?>
-        <a class="next" href="<?php echo $next->url() ?>">next project <span class="fa fa-arrow-right"></span></a>
+        <a class="next" href="<?php echo $next->url() ?>">next project <i class="fa fa-arrow-right"></i></a>
       <?php endif ?>
     </div>
 

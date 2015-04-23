@@ -8,6 +8,7 @@ language: en
 role: admin
 token: 821a157104ec41b9a7dee79b74592aa2dc1b83d7
 history:
+  - null
   - resume
   - home
   - home

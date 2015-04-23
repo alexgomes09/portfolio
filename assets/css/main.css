@@ -1,0 +1,349 @@
+/*
+
+Kirby Starterkit
+
+Author: Bastian Allgeier / Sascha Lack
+URL:    http://getkirby.com
+Email:  support@getkirby.com
+
+*/
+
+
+/* Source Sans Pro
+-------------------------------------------------- */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/sourcesanspro-300.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/sourcesanspro-400.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(../fonts/sourcesanspro-600.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/sourcesanspro-400-italic.woff) format('woff');
+}
+
+
+/* Reset
+-------------------------------------------------- */
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+
+
+/* Pix
+-------------------------------------------------- */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* Links
+-------------------------------------------------- */
+a {
+  color: #000;
+  text-decoration: none;
+  transition: color .3s, background .3s, border .3s;
+}
+a:hover {
+  color: red;
+}
+
+
+/* Clearfix
+-------------------------------------------------- */
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Site
+-------------------------------------------------- */
+html {
+  height: 101%;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0 auto;
+  font-size: 1.25em;
+  line-height: 1.5em;
+  padding: 1em 1.5em 1.5em 1.5em;
+  max-width: 60em;
+  background: #fff;
+  color: #222;
+}
+
+
+/* Header
+-------------------------------------------------- */
+.header {
+  border-bottom: 2px solid red;
+  margin-bottom: 1.5em;
+}
+.logo {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.logo a{
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.logo img {
+  width:6em;
+  border-radius: 50%;
+}
+
+
+/* Navigation
+-------------------------------------------------- */
+nav{
+  position: relative;
+  top: 0px;
+}
+.menu a {
+  display: block;
+  color: #222;
+}
+.menu a:hover {
+  color: red;
+  text-decoration: none;
+}
+.menu .active {
+  color: red;
+}
+.menu li {
+  list-style: none;
+}
+.menu > li {
+  text-align: center;
+  position: relative;
+}
+.menu > li > a {
+  padding: .35em 0;
+  border-top: 1px solid #ddd;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.submenu {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  left: 1em;
+}
+.submenu:before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: -.5em;
+  left: 0;
+  border-top: .5em solid transparent;
+  border-bottom: .5em solid transparent;
+  border-left: .5em solid #222;
+}
+.submenu li {
+  border-bottom: 1px solid #444;
+}
+.submenu a {
+  padding: .5em 1.5em;
+  font-size: .9em;
+  font-weight: 300;
+  color: #fff;
+  background: #222;
+  white-space: nowrap;
+}
+.submenu a:hover {
+  background: #333;
+  color: #fff;
+}
+
+@media screen and (min-width: 60em) {    /*this is for desktop style. and outside is mobile*/
+  body {
+    padding: 1em 3em;
+  }
+  .logo img {
+    width:9em;
+    border-radius: 50%;
+  }
+  nav {
+    position: relative;
+    top:-129px;
+    padding-left: 60px;
+    margin-bottom: -50px;
+  }
+  .menu {
+    text-align: center;
+  }
+  .menu > li {
+    display: inline-block;
+  }
+  .menu > li:nth-child(3){
+    margin-left:250px;
+  }
+
+  .menu > li > a {
+    padding: .35em 1em;
+    border: 0;
+  }
+  .menu > li:hover .submenu {
+    display: block;
+  }
+}
+
+
+/* Headings
+-------------------------------------------------- */
+h1 {
+  font-size: 2em;
+  line-height: 1.25em;
+  font-weight: 400;
+  margin-bottom: .5em;
+}
+h2 {
+  font-size: 1.5em;
+  line-height: 1.25em;
+  font-weight: 300;
+  margin-bottom: .5em;
+}
+h3 {
+  font-size: 1.17em;
+  line-height: 1.5em;
+  font-weight: 400;
+  margin-bottom: .5em;
+}
+h4 {
+  font-size: 1.125em;
+  font-weight: 600;
+  line-height: 1.5em;
+  margin-bottom: .5em;
+}
+h1 a, h2 a, h3 a, h4 a {
+  color: inherit;
+  border: 0 !important;
+}
+
+
+
+/* Main
+-------------------------------------------------- */
+.main {
+  padding-bottom: 1.5em;
+  border-bottom: 2px solid red;
+}
+.main hr {
+  margin: 3em 0;
+  height: 2px;
+  background: #ddd;
+}
+.main p,
+.main figure,
+.main ul,
+.main ol {
+  margin-bottom: 1.5em;
+}
+.main a {
+  border-bottom: 2px solid #ddd;
+}
+.main a:hover {
+  border-color: #222;
+}
+
+/* Text blocks */
+.text ul,
+.text ol {
+  margin-left: 1em;
+}
+
+/* Project meta
+-------------------------------------------------- */
+.meta {
+  margin-bottom: 1.5em;
+}
+.meta li {
+  float: left;
+  list-style: none;
+  margin-right: 2em;
+  color: red;
+}
+.meta li b {
+  font-weight: 400;
+  color: #000;
+  padding-right: .25em;
+}
+
+
+/* Project teaser
+-------------------------------------------------- */
+.teaser {
+  list-style: none;
+}
+.teaser li {
+  margin-bottom: 1.5em;
+  list-style: none;
+}
+@media screen and (min-width: 50em) {
+  .teaser li {
+    float: left;
+    width: 30%;
+    margin-left: 5%;
+  }
+  .teaser li:first-child {
+    margin-left: 0;
+  }
+}
+
+
+/* Next/Prev nav
+-------------------------------------------------- */
+.nextprev {
+  padding: 0 0;
+}
+.nextprev a {
+  border: 0;
+}
+.nextprev .prev {
+  float: left;
+}
+.nextprev .next {
+  float: right;
+}
+
+
+/* Footer
+-------------------------------------------------- */
+.footer {
+  padding: 1em 0 4em;
+  font-size: .8em;
+}
+.copyright {
+  float: left;
+}

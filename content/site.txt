@@ -1,0 +1,21 @@
+Title: Alex Gomes
+
+----
+
+Author: Alex Gomes
+
+----
+
+Description: This is Kirby's Starterkit.
+
+----
+
+Keywords: Kirby,CMS,file-based
+
+----
+
+Copyright: © 2009-(date: Year) | All rights reserved |  **(link: http://www.facebook.com/alexhansgomes text: Alex Gomes popup:yes)**
+
+----
+
+Date: 2015-04-17

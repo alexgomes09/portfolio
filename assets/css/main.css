@@ -44,8 +44,8 @@ Email:  support@getkirby.com
   padding: 0;
   border: 0;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 article, aside, details, figcaption, figure,
 footer, header, hgroup, main, nav, section, summary {
@@ -286,11 +286,37 @@ h1 a, h2 a, h3 a, h4 a {
 
 /* Skills bar
 -------------------------------------------------- */
-.skills{
-  background: red;
+span.percentage {
+  color: black;
 }
-.skills >span{
-  background: blue;
+
+#skills span {
+  top: -30px;
+  left: 2%;
+  position: relative;
+  font-size: 1.4em;
+  font-weight: bolder;
+  font-family: monospace;
+  color: #fff;
+}
+
+progress {
+  background-color: #f3f3f3;
+  border: 0;
+  height: 2.5em;
+  width: 100%;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e0eaf0;
+}
+
+progress::-webkit-progress-value {
+  background-color: #329ad1;
+}
+
+progress::-moz-progress-bar {
+  background-color: #329ad1;
 }
 
 /* Project meta

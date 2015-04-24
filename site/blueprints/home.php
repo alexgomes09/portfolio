@@ -2,7 +2,6 @@
 
 title: Home
 pages: false
-
 fields:
   title:
     label: Title

@@ -2,7 +2,6 @@
 
 title: Site
 pages: default
-files: true
 fields:
   avatar:
     label: Avatar

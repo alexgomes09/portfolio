@@ -1,0 +1,9 @@
+Title: Resume
+
+----
+
+Skills: 
+
+- 
+  skill: 'C#'
+  range: 80

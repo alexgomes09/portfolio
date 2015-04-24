@@ -221,28 +221,29 @@ nav{
 
 
 /* Headings
--------------------------------------------------- */
+--------------------------------------------------*/
 h1 {
   font-size: 2em;
   line-height: 1.25em;
-  font-weight: 400;
+  font-weight: bolder;
   margin-bottom: .5em;
 }
 h2 {
   font-size: 1.5em;
   line-height: 1.25em;
-  font-weight: 300;
+  font-weight: bolder;
   margin-bottom: .5em;
+  color:red;
 }
 h3 {
   font-size: 1.17em;
   line-height: 1.5em;
-  font-weight: 400;
+  font-weight: bolder;
   margin-bottom: .5em;
 }
 h4 {
   font-size: 1.125em;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.5em;
   margin-bottom: .5em;
 }
@@ -281,6 +282,15 @@ h1 a, h2 a, h3 a, h4 a {
 .text ul,
 .text ol {
   margin-left: 1em;
+}
+
+/* Skills bar
+-------------------------------------------------- */
+.skills{
+  background: red;
+}
+.skills >span{
+  background: blue;
 }
 
 /* Project meta

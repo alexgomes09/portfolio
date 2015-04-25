@@ -5,7 +5,10 @@
   	</div>
   </footer>
 
-<?php echo js('panel/assets/js/vendors/jquery.js') ?>
-<?php echo js('assets/js/main.js') ?>
+ 
+ <!-- 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+-->
 </body>
 </html>

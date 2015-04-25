@@ -5,8 +5,11 @@ Title: Resume
 Skills: 
 
 - 
-  skill: 'C#'
-  range: 80
+  skill: 'C# (.Net, Xna) 4 years'
+  range: 70
 - 
-  skill: Java
-  range: 45
+  skill: Java (Swing, AWT) 2 years
+  range: 20
+- 
+  skill: Javascript
+  range: 88

@@ -7,8 +7,6 @@ URL:    http://getkirby.com
 Email:  support@getkirby.com
 
 */
-
-
 /* Source Sans Pro
 -------------------------------------------------- */
 @font-face {
@@ -287,23 +285,21 @@ h1 a, h2 a, h3 a, h4 a {
 /* Skills bar
 -------------------------------------------------- */
 span.percentage {
-  color: black;
+  float: right;
+  font-size: 12px;
+  margin-right: 4%;
 }
 
-#skills span {
-  top: -30px;
-  left: 2%;
+.attributes span {
+  top: -31px;
+  left: 1.5%;
   position: relative;
-  font-size: 1.4em;
-  font-weight: bolder;
-  font-family: monospace;
-  color: #fff;
 }
 
 progress {
   background-color: #f3f3f3;
   border: 0;
-  height: 2.5em;
+  height: 1.2em;
   width: 100%;
 }
 

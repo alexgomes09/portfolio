@@ -1,12 +1,9 @@
 /*
-
-Kirby Starterkit
-
-Author: Bastian Allgeier / Sascha Lack
-URL:    http://getkirby.com
-Email:  support@getkirby.com
-
+Author: Alex Gomes
+URL:    http://alexgomes.tk
+Email:  alex.09hg@gmail.com
 */
+
 /* Source Sans Pro
 -------------------------------------------------- */
 @font-face {
@@ -46,7 +43,7 @@ Email:  support@getkirby.com
   box-sizing: border-box;
 }
 article, aside, details, figcaption, figure,
-footer, header, hgroup, main, nav, section, summary {
+footer, header, hgroup, .main, nav, section, summary {
   display: block;
 }
 
@@ -215,6 +212,29 @@ nav{
     display: block;
   }
 }
+
+/* Mix It UP 
+--------------------------------------------------*/
+#Container .mix{
+  display: none;
+}
+#Container{
+  border:2px solid black;
+}
+.filter{
+  background-color: lightgray;
+  padding: 0.2em 0.5em;
+  display: inline-block;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+.filter.active{
+  background-color: red;
+}
+.filter:hover{
+  background-color: red;
+}
+
 
 
 /* Headings

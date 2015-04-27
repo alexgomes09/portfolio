@@ -10,4 +10,7 @@ $(document).ready(function() {
     		easing:"easeOutCirc",
     	});
     });
+
+    //MixItUp function
+    $('#Container').mixItUp();
 });

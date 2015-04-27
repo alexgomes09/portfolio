@@ -10,9 +10,11 @@
   <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
   <?php echo css('panel/assets/css/fontawesome.css') ?>
+  <?php echo css('assets/css/fontello.css') ?>
   <?php echo css('assets/css/main.css') ?>
   
   <?php echo js('panel/assets/js/vendors/jquery.js') ?>
+  <?php echo js('assets/js/jquery.mixitup.min.js') ?>
   <?php echo js('assets/js/easing.min.js') ?>
   <?php echo js('assets/js/main.js') ?>
 

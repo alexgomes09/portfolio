@@ -4,7 +4,7 @@ Title: Home
 
 Text: 
 
-#**Welcome**
+#**About me**
 
 ####I am Alex Gomes. I am a software engineer <br>and graphic designer from Toronto, Ontario. </br></br>
 

@@ -9,7 +9,64 @@ Skills:
   range: 70
 - 
   skill: Java (Swing, AWT) 2 years
-  range: 20
+  range: 100
 - 
   skill: Javascript
   range: 88
+
+----
+
+Experience: 
+
+- 
+  company: 'Mind Body and Soul '
+  role: SEO specialist
+  from: 2015
+  to: 2015
+  description: |
+    - troubleshout SEO issues
+    - develop wordpress theme
+- 
+  company: Heritage Skills Development Centre
+  role: Web Developer
+  from: 2013
+  to: 2015
+  description: |
+    - Designing and creating webpage from scratch in Photoshop, HTML, CSS, JavaScript
+    - Converting entire site to mobile compatible site with the responsiveness keep in mind
+    - Converting site to a CMS using WordPress platform
+- 
+  company: Novellus Graphics Resource Inc
+  role: Label Designer
+  from: 2011
+  to: 2012
+  description: |
+    - Worked with other employee to create various products’ label and packaging.
+    - Trouble shooting technical problems, installing hardware and software.
+    - Created comprehensive design for different company product packages.
+- 
+  company: 'Zellers '
+  role: 'Sales Representative '
+  from: 2008
+  to: 2010
+  description: |
+    - Worked closely with sales management team
+    - Introduced new products to general public (Electronic department)
+    - Stocking up shelves and helped cashier at rush time
+
+----
+
+Education: 
+
+- 
+  schoolname: Centennial College
+  major: 'Software Engineering Technology & Interactive Gaming'
+  degreetype: Associate Degree
+  from: 2012
+  to: 2015
+- 
+  schoolname: Centennial College
+  major: Art and Design Foundation Studies
+  degreetype: Certificate
+  from: 2011
+  to: 2012

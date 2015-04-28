@@ -1,31 +1,26 @@
-<?php snippet('header') ?>
+<?php snippet( 'header') ?>
 
 <main class="main" role="main">
-
 	<div class="text">
-
 		<div id="Container">
 			<div class="filter" data-filter="all"><i class="icon-th-thumb"></i>Show All</div>
-			<div class="filter" data-filter=".category-1">Category 1</div>
-			<div class="filter" data-filter=".category-2">Category 2</div>
-			</br>
-			<div class="mix category-1" data-myorder="2">
-				category-1
+			<?php foreach($page->filters()->split(',') as $filter): ?>
+				<div class="filter" data-filter=".<?php echo $filter ?>"><?php echo $filter ?></div>
+			<?php endforeach ?>
+		</br>
+		<?php foreach($page->projthumb()->yaml() as $projthumb): ?>
+			<div class="mix <?php echo $projthumb['category'] ?>" >
+				<a href="<?php echo url().'/'.$projthumb['link'] ?>">
+					<img src="<?php echo $page->image($projthumb['thumb'])->url()?>">
+				</a>
 			</div>
-			<div class="mix category-2" data-myorder="4">
-				category-2
-			</div>
-			<div class="mix category-1" data-myorder="1">
-				category-1
-			</div>
-			<div class="mix category-2" data-myorder="8">
-				category-2
-			</div>
-		</div>
+		<?php endforeach ?>
 	</div>
+</div>
 
-	<?php snippet('projects') ?>
+<?php snippet( 'projects') ?>
 
 </main>
 
-<?php snippet('footer') ?>
+<?php snippet( 'footer') ?>
+

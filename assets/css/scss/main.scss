@@ -181,7 +181,7 @@ nav{
   color: #fff;
 }
 
-@media screen and (min-width: 50em) {    /*this is for desktop style. and outside is mobile*/
+@media screen and (min-width: 60em) {    /*this is for desktop style. and outside is mobile*/
   body {
     padding: 1em 3em;
   }
@@ -211,48 +211,31 @@ nav{
   .menu > li:hover .submenu {
     display: block;
   }
-
 }
 
 /* Mix It UP 
 --------------------------------------------------*/
-#Container{
-  text-align: center;
-}
 #Container .mix{
   display: none;
-  width: 70%;
-  margin: 5px;
 }
 #Container{
   border:2px solid black;
 }
 .filter{
-  background-color: #E6E6E6;
+  background-color: lightgray;
   padding: 0.2em 0.5em;
-  display: block;
-  margin-bottom: 5px;
+  display: inline-block;
+  margin-bottom: 1em;
   cursor: pointer;
 }
 .filter.active{
-  background-color: orange;
+  background-color: red;
 }
+$color = 'blue';
 .filter:hover{
-  background-color: orange;
+  background-color: brightness($color);
 }
-@media screen and (min-width: 50em) {
-  #Container{
-    text-align: inherit;
-  }
-  .filter{
-    margin-bottom: 1em;
-    display: inline-block;
-  }
-  #Container .mix{
-    width: 31%;
-    margin:10px;
-  }
-}
+
 
 
 /* Headings

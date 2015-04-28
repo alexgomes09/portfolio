@@ -1,1 +1,22 @@
 Title: Work
+
+----
+
+Projthumb: 
+
+- 
+  category: Node
+  link: projects/project-a
+  thumb: webchatapp.jpg
+- 
+  category: Node
+  link: projects/project-b
+  thumb: webchatapp.jpg
+- 
+  category: Wordpress
+  link: projects/project-c
+  thumb: webchatapp.jpg
+
+----
+
+Filters: Node,Wordpress

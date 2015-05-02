@@ -12,9 +12,12 @@ fields:
   year:
     label: Year
     type:  text
+  sidenote:
+    label: Side Note (project information)
+    type:  textarea
   text:
-    label: Text
+    label: Project Details
     type:  textarea
   tags:
-    label: Tags
+    label: Techology used
     type:  tags

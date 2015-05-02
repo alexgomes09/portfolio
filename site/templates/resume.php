@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="attributes">
-			<h3><i class="icon-graduation-cap-1"></i>Work Experience</h3>
+			<h3><i class="icon-cogs"></i>Work Experience</h3>
 			<div>
 				<?php foreach($page->experience()->yaml() as $experience): ?>
 					<h4><?php echo $experience['company'] ?></h4>
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<div class="attributes">
-			<h3><i class="icon-book-open"></i>Education</h3>
+			<h3><i class="icon-graduation-cap-1"></i>Education</h3>
 			<div>
 				<?php foreach($page->education()->yaml() as $education): ?>
 					<h4><?php echo $education['schoolname'] ?></h4>

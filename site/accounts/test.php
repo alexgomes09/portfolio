@@ -7,7 +7,9 @@ password: >
 language: en
 role: admin
 history:
+  - projects/health-clinic-demo-app
   - projects
+  - projects/project-b
   - resume
   - home
-token: 9e90135ddf3728470b6116d5c237e85974143844
+token: f10273bb704cfaed5a08deb1f0f9ec0b28400a9f

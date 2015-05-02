@@ -211,21 +211,18 @@ nav{
   .menu > li:hover .submenu {
     display: block;
   }
-
 }
 
 /* Mix It UP 
 --------------------------------------------------*/
 #Container{
   text-align: center;
+  margin-bottom: 2em;
 }
 #Container .mix{
   display: none;
   width: 70%;
   margin: 5px;
-}
-#Container{
-  border:2px solid black;
 }
 .filter{
   background-color: #E6E6E6;
@@ -253,7 +250,6 @@ nav{
     margin:10px;
   }
 }
-
 
 /* Headings
 --------------------------------------------------*/
@@ -318,6 +314,14 @@ h1 a, h2 a, h3 a, h4 a {
 .text ol {
   margin-left: 1em;
 }
+.text p{
+  text-align: justify;
+}
+@media screen and (min-width: 50em) {
+  .text p{
+    text-align: inherit;
+  }
+}
 
 /* Skills bar, resume attributes
 -------------------------------------------------- */
@@ -370,23 +374,29 @@ progress::-moz-progress-bar {
   display: none
 }
 
-/* Project meta
+/* Single Project info and details
 -------------------------------------------------- */
-.meta {
+#projectInfo{
   margin-bottom: 1.5em;
+  border-bottom:1px solid black;
 }
-.meta li {
-  float: left;
-  list-style: none;
-  margin-right: 2em;
-  color: red;
+#projectDetails img{
+  margin: 0 auto; 
 }
-.meta li b {
-  font-weight: 400;
-  color: #000;
-  padding-right: .25em;
+@media screen and (min-width: 50em) {
+  #projectInfo{
+    float:left;
+    width: 30%;
+    padding-right: 10px;
+    border-bottom:none;
+  }
+  #projectDetails{
+    float: right;
+    width: 70%;
+    border-left: 1px solid black;
+    padding-left:10px; 
+  }
 }
-
 
 /* Project teaser
 -------------------------------------------------- */
@@ -413,6 +423,7 @@ progress::-moz-progress-bar {
 -------------------------------------------------- */
 .nextprev {
   padding: 0 0;
+  clear: both;
 }
 .nextprev a {
   border: 0;
@@ -429,7 +440,7 @@ progress::-moz-progress-bar {
 -------------------------------------------------- */
 .footer {
   padding: 1em 0 4em;
-  font-size: .8em;
+  font-size: .9em;
 }
 .copyright {
   float: left;

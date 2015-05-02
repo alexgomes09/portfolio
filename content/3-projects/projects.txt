@@ -6,7 +6,7 @@ Projthumb:
 
 - 
   category: Node
-  link: projects/project-a
+  link: projects/health-clinic-demo-app
   thumb: webchatapp.jpg
 - 
   category: Node

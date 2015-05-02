@@ -18,8 +18,6 @@
 	</div>
 </div>
 
-<?php snippet( 'projects') ?>
-
 </main>
 
 <?php snippet( 'footer') ?>

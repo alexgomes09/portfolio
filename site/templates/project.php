@@ -1,33 +1,36 @@
 <?php snippet('header') ?>
 
-  <main class="main" role="main">
+<main class="main" role="main">
 
-    <h1><?php echo $page->title()->html() ?></h1>
+  <h1><?php echo $page->title()->html() ?></h1>
 
-    <ul class="meta cf">
-      <li><b>Year:</b> <time datetime="<?php echo $page->date('c') ?>"><?php echo $page->date('Y', 'year') ?></time></li>
-      <li><b>Tags:</b> <?php echo $page->tags() ?></li>
-    </ul>
+  <div class="text">
 
-    <div class="text">
-      <?php echo $page->text()->kirbytext() ?>
-
-      <?php foreach($page->images()->sortBy('sort', 'asc') as $image): ?>
-      <figure>
-        <img src="<?php echo $image->url() ?>" alt="<?php echo $page->title()->html() ?>">
-      </figure>
+    <div id="projectInfo">
+      <b>Technology Used: </b><br>
+      <?php foreach($page->tags()->split(',') as $tag): ?>
+        <?php echo $tag."<br>"?> 
       <?php endforeach ?>
+
+      <p><br><b>Year: </b><?php echo $page->date('Y', 'year') ?></p>
+      <?php echo $page->sidenote()->kirbytext() ?>
     </div>
 
-    <div class="nextprev cf" role="navigation">
-      <?php if($prev = $page->prevVisible()): ?>
-        <a class="prev" href="<?php echo $prev->url() ?>"><i class="fa fa-arrow-left"></i> previous project</a>
-      <?php endif ?>
-      <?php if($next = $page->nextVisible()): ?>
-        <a class="next" href="<?php echo $next->url() ?>">next project <i class="fa fa-arrow-right"></i></a>
-      <?php endif ?>
+    <div id="projectDetails">
+      <?php echo $page->text()->kirbytext() ?>
     </div>
 
-  </main>
+  </div>
+
+  <div class="nextprev cf" role="navigation">
+    <?php if($prev = $page->prevVisible()): ?>
+      <a class="prev" href="<?php echo $prev->url() ?>"><i class="fa fa-arrow-left"></i> previous project</a>
+    <?php endif ?>
+    <?php if($next = $page->nextVisible()): ?>
+      <a class="next" href="<?php echo $next->url() ?>">next project <i class="fa fa-arrow-right"></i></a>
+    <?php endif ?>
+  </div>
+
+</main>
 
 <?php snippet('footer') ?>

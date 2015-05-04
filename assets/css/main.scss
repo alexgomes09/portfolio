@@ -4,6 +4,11 @@ URL:    http://alexgomes.tk
 Email:  alex.09hg@gmail.com
 */
 
+$linkColor:#000;
+$linkHoverColor:red;
+
+
+
 /* Source Sans Pro
 -------------------------------------------------- */
 @font-face {
@@ -47,7 +52,6 @@ footer, header, hgroup, .main, nav, section, summary {
   display: block;
 }
 
-
 /* Pix
 -------------------------------------------------- */
 img {
@@ -55,16 +59,15 @@ img {
   max-width: 100%;
 }
 
-
 /* Links
 -------------------------------------------------- */
 a {
-  color: #000;
+  color: $linkColor;
   text-decoration: none;
   transition: color .3s, background .3s, border .3s;
 }
 a:hover {
-  color: red;
+  color: $linkHoverColor;
 }
 
 
@@ -181,7 +184,7 @@ nav{
   color: #fff;
 }
 
-@media screen and (min-width: 60em) {    /*this is for desktop style. and outside is mobile*/
+@media screen and (min-width: 50em) {    /*this is for desktop style. and outside is mobile*/
   body {
     padding: 1em 3em;
   }
@@ -215,28 +218,41 @@ nav{
 
 /* Mix It UP 
 --------------------------------------------------*/
+#Container{
+  text-align: center;
+  margin-bottom: 2em;
+}
 #Container .mix{
   display: none;
-}
-#Container{
-  border:2px solid black;
+  width: 70%;
+  margin: 5px;
 }
 .filter{
-  background-color: lightgray;
+  background-color: #E6E6E6;
   padding: 0.2em 0.5em;
-  display: inline-block;
-  margin-bottom: 1em;
+  display: block;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 .filter.active{
-  background-color: red;
+  background-color: orange;
 }
-$color = 'blue';
 .filter:hover{
-  background-color: brightness($color);
+  background-color: orange;
 }
-
-
+@media screen and (min-width: 50em) {
+  #Container{
+    text-align: inherit;
+  }
+  .filter{
+    margin-bottom: 1em;
+    display: inline-block;
+  }
+  #Container .mix{
+    width: 31%;
+    margin:10px;
+  }
+}
 
 /* Headings
 --------------------------------------------------*/
@@ -301,6 +317,14 @@ h1 a, h2 a, h3 a, h4 a {
 .text ol {
   margin-left: 1em;
 }
+.text p{
+  text-align: justify;
+}
+@media screen and (min-width: 50em) {
+  .text p{
+    text-align: inherit;
+  }
+}
 
 /* Skills bar, resume attributes
 -------------------------------------------------- */
@@ -353,23 +377,34 @@ progress::-moz-progress-bar {
   display: none
 }
 
-/* Project meta
+/* Single Project info and details
 -------------------------------------------------- */
-.meta {
+#projectInfo{
   margin-bottom: 1.5em;
+  border-bottom:1px solid black;
 }
-.meta li {
-  float: left;
-  list-style: none;
-  margin-right: 2em;
-  color: red;
+.sourcecode{
+  background:orange;
+  width: 100%;
+  padding: 10px;
 }
-.meta li b {
-  font-weight: 400;
-  color: #000;
-  padding-right: .25em;
+#projectDetails img{
+  margin: 0 auto; 
 }
-
+@media screen and (min-width: 50em) {
+  #projectInfo{
+    float:left;
+    width: 30%;
+    padding-right: 10px;
+    border-bottom:none;
+  }
+  #projectDetails{
+    float: right;
+    width: 70%;
+    border-left: 1px solid black;
+    padding-left:10px; 
+  }
+}
 
 /* Project teaser
 -------------------------------------------------- */
@@ -396,6 +431,7 @@ progress::-moz-progress-bar {
 -------------------------------------------------- */
 .nextprev {
   padding: 0 0;
+  clear: both;
 }
 .nextprev a {
   border: 0;
@@ -412,7 +448,7 @@ progress::-moz-progress-bar {
 -------------------------------------------------- */
 .footer {
   padding: 1em 0 4em;
-  font-size: .8em;
+  font-size: .9em;
 }
 .copyright {
   float: left;

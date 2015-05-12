@@ -13,4 +13,14 @@ $(document).ready(function() {
 
     //MixItUp function
     $('#Container').mixItUp();
+    
+
+    $.SyntaxHighlighter.init({
+        'wrapLines':true,
+        'load':true
+    });
+
+
+
+
 });

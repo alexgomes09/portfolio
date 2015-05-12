@@ -2,7 +2,7 @@ Title: Health Clinic- Demo App
 
 ----
 
-Year: 2014
+Year: 2011
 
 ----
 
@@ -10,8 +10,68 @@ Tags: Node,Angular,MongoDB,ExpressJs
 
 ----
 
-Sidenote: Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum
+Sidenote: to tumra kemun aso ekhon. this is side note
 
 ----
 
-Text: Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+Text: 
+
+Testing Testing and Testing 
+<pre class="language-html">
+#projectInfo{
+  margin-bottom: 1.5em;
+  border-bottom:1px solid black;
+}
+.sourcecode{
+  background-color:$buttonBackground;
+  padding: 5px;
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+  &:hover{
+    background-color: lightgreen;
+    color: black;
+    border: none;
+    text-decoration: none;
+  }
+  &:focus{
+    color: black;
+    text-decoration: none
+  }
+}
+</pre>
+
+testing more stuff **here **
+
+----
+
+Sourcecode: https://github.com/alexgomes09/HealthApp
+
+----
+
+Codesnippet: 
+
+- 
+  languagetype: css
+  code: |
+    #projectInfo{
+      margin-bottom: 1.5em;
+      border-bottom:1px solid black;
+    }
+    .sourcecode{
+      background-color:$buttonBackground;
+      padding: 5px;
+      display: block;
+      text-align: center;
+      margin-bottom: 1em;
+      &:hover{
+        background-color: lightgreen;
+        color: black;
+        border: none;
+        text-decoration: none;
+      }
+      &:focus{
+        color: black;
+        text-decoration: none
+      }
+    }

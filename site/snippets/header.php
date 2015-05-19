@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8" />
   <meta http-equiv="refresh" content="1415645643135">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -10,19 +11,22 @@
   <meta name="description" content="<?php echo $site->description()->html() ?>">
   <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
-
   <?php echo css('assets/css/bootstrap.min.css') ?>
   <?php echo css('panel/assets/css/fontawesome.css') ?>
   <?php echo css('assets/css/fontello.css') ?>
+  <?php echo css('assets/css/prism.css') ?>
   <?php echo css('assets/css/main.css') ?>
 
   <?php echo js('panel/assets/js/vendors/jquery.js') ?>
+  <?php echo js('assets/js/respond.min.js') ?>
+  <?php echo js('assets/js/html5.js') ?>
   <?php echo js('assets/js/bootstrap.min.js') ?>
   <?php echo js('assets/js/jquery.mixitup.min.js') ?>
   <?php echo js('assets/js/easing.min.js') ?>
-  <?php echo js('assets/js/syntaxhighlighter.min.js') ?>
+  <?php echo js('assets/js/prism.min.js') ?>
   <?php echo js('assets/js/main.js') ?>
+
+  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 
 </head>
 <body>

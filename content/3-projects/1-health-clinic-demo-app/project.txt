@@ -1,0 +1,165 @@
+Title: Health Clinic- Demo App
+
+----
+
+Year: 2015
+
+----
+
+Tags: Node,Angular,MongoDB,ExpressJs
+
+----
+
+Sidenote: 
+
+----
+
+Text: 
+
+A web app to demonstrate partial system of a health clinic system. User will be able to see the list of patients and interact with each list by clicking on a patient name which will the route user to patient details page
+
+(image: healthapp-1.JPG)
+**Figure-1:** First page showing list of patients. Each patient is clickable which will take user to Patient details page
+
+(image: healthapp-2.JPG)
+**Figure-2:** Patient Details page. User will be able to modify / insert new record in this form
+
+----
+
+Sourcecode: https://github.com/alexgomes09/HealthApp
+
+----
+
+Codesnippet: 
+
+- 
+  filename: app
+  languagetype: language-javascript
+  code: |
+    // File: app.js
+    var app = angular.module("myApp", ['ngRoute']);
+    app.config(['$routeProvider',
+        function ($routeProvider) {
+            $routeProvider.
+            when('/PatientList', {
+                templateUrl: 'PatientList.html',
+                controller: 'PatientList'
+            }).
+            when('/PatientDetails', {
+                templateUrl: 'PatientDetails.html',
+                controller: 'PatientDetails'
+            }).
+            otherwise({
+                redirectTo: '/PatientList'
+            });
+        }]);
+    
+    app.controller("PatientList", function ($scope, $location, Patient) {
+    		// call Patient Service and get all patient from JSON file
+        Patient.getPatient().success(function (data) {
+            $scope.patientModel = data; // store patient in patientModel variable on scope level
+        });
+    		// if user select patient then point user to patient details page along with clicked patient information
+        $scope.selectedPatient = function (patient) {
+            $location.path('/PatientDetails');
+            Patient.setPatientDetails(patient);
+        };
+    		// simple on click reset method
+        $scope.resetForm = function () {
+            Patient.setPatientDetails('');
+        };
+    });
+    
+    app.controller("PatientDetails", function ($scope, Patient) {
+        $scope.patient = {};
+    		// before we go to patient details page lets store selected patient information into patient object
+        $scope.patient.firstName = Patient.getPatientDetails().firstName;
+        $scope.patient.lastName = Patient.getPatientDetails().lastName;
+        $scope.patient.phoneNo = Patient.getPatientDetails().phoneNo;
+        $scope.patient.lastVisitDate = Patient.getPatientDetails().lastVisitDate;
+        $scope.patient.Status = Patient.getPatientDetails().Status;
+        // on click empty patient object
+        $scope.resetForm = function () {
+            $scope.patient = {};
+        };
+    		// submit modified / new patient data to server by using '/save' request
+    		// server then receives '/save' request and saves data into json file
+        $scope.submit = function (patient) {
+            Patient.putPatient(patient); // $http.PUT request
+        }
+    });
+    
+    
+    app.service("Patient", ['$http', function ($http) {
+        var url = '../Data/Patient.json';
+        var patientDetails = '';
+    
+        this.getPatient = function () {
+            return $http.get(url);
+        };
+    
+        this.putPatient = function (data) {
+            return $http.post('/save',data);
+        };
+    
+        this.getPatientDetails = function () {
+            return patientDetails;
+        };
+        this.setPatientDetails = function (value) {
+            patientDetails = value;
+        };
+    
+    }]);
+- 
+  filename: server
+  languagetype: language-javascript
+  code: |
+    // File: server.js
+    var http = require('http');
+    var express = require('express');
+    var fs = require('fs');
+    var bodyParser =require('body-parser');
+    
+    var app = express();
+    // open port 5000
+    var port = process.env.PORT || 5000;
+    //forward user to static directory.
+    app.use(express.static( __dirname + '/Public/Patients'));
+    // home route '/'
+    app.get('/', function (req, res) {
+        res.sendFile( __dirname + '/Public/Patients/Views/index.html');
+    });
+    // handling '/save' request and parsing request body using bodyParser module
+    app.post('/save',bodyParser.json(),function(req,res){
+        var fileName = __dirname+'/Public/Patients/Data/Patient.json'; // accessing json data
+        var patientData = [];
+    
+        patientData.push(JSON.stringify("firstName")+":"+JSON.stringify(req.body.firstName));
+        patientData.push(JSON.stringify("lastName")+":"+JSON.stringify(req.body.lastName));
+        patientData.push(JSON.stringify("phoneNo")+":"+JSON.stringify(req.body.phoneNo));
+        patientData.push(JSON.stringify("lastVisitDate")+":"+JSON.stringify(req.body.lastVisitDate));
+        patientData.push(JSON.stringify("Status")+":"+JSON.stringify(req.body.Status));
+    
+    		// first read json file
+        fs.readFile(fileName,'utf8',function(err,data){
+            var body = data.replace("]",""); // replace closing tag with empty ""
+            // then write data that just received via request from front-end form
+            fs.writeFile(fileName,body+",{"+patientData+"}]",[{encoding:'utf8',flag:'w'}],function(err)      {
+            if(err){
+                console.log(err);
+            }else{
+                console.log('file saved'); // console out msg
+            }
+        })
+        });
+    })
+    app.listen(port); // listen port 5000
+    console.log('port running at '+port);
+
+----
+
+Projectlocation: http://healthwebapp.herokuapp.com/#/PatientList
+
+----
+
+Download: healthapp.zip

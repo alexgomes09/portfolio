@@ -5,18 +5,18 @@ Title: Work
 Projthumb: 
 
 - 
-  category: Node
+  category: Node Angular
   link: projects/health-clinic-demo-app
-  thumb: webchatapp.jpg
+  thumb: healthapp-1.jpg
 - 
-  category: Node
-  link: projects/project-b
+  category: Node Angular
+  link: projects/web-irc
   thumb: webchatapp.jpg
 - 
   category: Wordpress
-  link: projects/project-c
-  thumb: webchatapp.jpg
+  link: projects/lala-skin-essentials
+  thumb: lalaskinessentials.jpg
 
 ----
 
-Filters: Node,Wordpress
+Filters: Node,Angular,Wordpress

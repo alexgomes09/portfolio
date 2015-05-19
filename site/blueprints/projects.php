@@ -25,5 +25,5 @@ fields:
 				label: Link to project
 				type : page
 			thumb:
-				label: Thumbnail of project
+				label: Thumbnail of project (283px width * 217px height)
 				type: text

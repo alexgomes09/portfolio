@@ -5,14 +5,20 @@ Title: Resume
 Skills: 
 
 - 
-  skill: 'C# (.Net, Xna) 4 years'
+  skill: 'HTML5, CSS3 - 5 years'
+  range: 95
+- 
+  skill: 'Javascript, jQuery - 4 years'
+  range: 80
+- 
+  skill: 'AngularJS - 2 years'
   range: 70
 - 
-  skill: Java (Swing, AWT) 2 years
-  range: 100
+  skill: 'C# (.Net, Xna, Win Form) - 4 years'
+  range: 75
 - 
-  skill: Javascript
-  range: 88
+  skill: 'Java (Swing, AWT) - 2 years'
+  range: 65
 
 ----
 

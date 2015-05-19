@@ -1,0 +1,218 @@
+Title: Web IRC
+
+----
+
+Year: 2015
+
+----
+
+Sidenote: 
+
+----
+
+Projectlocation: http://chatwebapp.herokuapp.com/
+
+----
+
+Sourcecode: https://github.com/alexgomes09/WebChatApp
+
+----
+
+Tags: Node,Angular,SocketIO,MongoDB
+
+----
+
+Text: 
+
+An experiment of using (link: http://socket.io text: Socket.io) in order to understand how users can perform full-duplex communication over a TCP connection. Even thou I didn't implement full-duplex channel but I was amazed by the power of this technology. In future I would like to extend this application by implementing full-duplex channel where single/multi users would be able to perform truly full-duplex IRC.
+
+(image: userconnected.jpg)
+**Figure-1:** Application starts with connecting a user
+(image: msging.jpg)
+**Figure-2:** User Interface (kept it simple for the sake of demonstration purpose)
+(image: console-output.jpg)
+**Figure-3:** Also console out in debug mode to analyze the data flow from angular controllers to service to node server
+
+----
+
+Codesnippet: 
+
+- 
+  filename: app
+  languagetype: language-javascript
+  code: |
+    // File: app.js
+    var app = angular.module("ChatApp", ['ngRoute']); // declare angular app
+    var log = console.log.bind(console);
+    
+    app.config(['$routeProvider',function ($routeProvider) {
+        $routeProvider.
+        when('/', {
+            template: "",
+            controller: 'ChatAppController'
+        }).
+        otherwise({
+                redirectTo: '/' // route to index.html
+            });
+    }]);
+    
+    app.controller("ChatAppController", function ($scope,ChatAppService) {
+        $scope.msgArray = [];
+    
+        $scope.messages = function(msg){
+            $scope.msgArray.push(msg); // save msg to an array
+        }
+    });
+    
+    app.service("ChatAppService", ['$http', function ($http) {
+        this.putChatHistory = function (data) {
+            return $http.post('/save',data); // call $http POST method from angular to node server
+        };
+    }]);
+- 
+  filename: server
+  languagetype: language-javascript
+  code: |
+    // File : server.js
+    var express = require('express');
+    var app = express();
+    var http = require('http').Server(app);
+    var io = require('socket.io')(http);
+    var fs = require('fs');
+    var bodyParser =require('body-parser');
+    
+    app.use(express.static(__dirname + '/Public'));
+    
+    app.get('/', function (req, res) {
+        res.sendFile(__dirname + '/Public/Views/index.html');
+    });
+    
+    // mongo DB dependencies
+    var Db=require("mongodb").Db,MongoClient=require("mongodb")
+    .MongoClient,Server=require("mongodb").Server,ReplSetServers=require("mongodb")
+    .ReplSetServers,ObjectID=require("mongodb")
+    .ObjectID,Binary=require("mongodb")
+    .Binary,GridStore=require("mongodb")
+    .GridStore,Grid=require("mongodb")
+    .Grid,Code=require("mongodb")
+    .Code,BSON=require("mongodb")
+    .pure().BSON,assert=require("assert");
+    
+    // create instance of mongo db on port 27017
+    var connection =  "mongodb://webchatapp:webchatapp@ds061691.mongolab.com:61691/webchatapp";
+    var db = new Db('ChatDB', new Server("localhost",27017),{safe:false});
+    
+    ////////////// socket.io ///////////////
+    io.on('connection', function (socket) {
+        console.log('a user connected');
+    
+        socket.on('disconnect', function(){
+            // on disconnect drop previous collection
+            db.open(function(err, db) {
+                db.dropCollection("chatHistory",function(err,result){
+                    console.log(result);
+                    db.close();
+                })
+            });
+            console.log('user disconnected');
+        });
+    
+        socket.on('chat message', function (msg) {
+            console.log("message:- "+ msg);
+            io.emit('chat message',msg); // emit msg from server side
+    
+            // while chat message is entered open database and insert messages
+            db.open(function(err, db) {
+              var collection = db.collection("chatHistory");
+              collection.insert([{msg:msg}], {w:1}, function(err, result) {
+                assert.equal(null, err);
+                db.close();
+            });
+          });
+        })
+    });
+    
+    // save data to json file
+    app.post('/save',bodyParser.json(),function(req,res){ // parse body using json body parser
+        res.set('Content-Type', 'application/json'); // tell Angular that this is JSON
+        var fileName = __dirname+'/Public/Data/ChatHistory.json';
+        fs.readFile(fileName,'utf8',function(err,data){
+            var chatHistory = JSON.stringify(req.body);
+            fs.writeFile(fileName,chatHistory,[{encoding:'utf8',flag:'a'}],function(err){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log('file saved');
+                }
+            })
+        });
+        res.sendStatus(200);
+    })
+    
+    app.listen(process.env.PORT, process.env.IP);
+    http.listen(3000, function(){
+        console.log('listening on *:3000'); // open port 3000 and let app listen to it
+    
+    });
+- 
+  filename: client
+  languagetype: language-javascript
+  code: |
+    // File : client.js
+    var socket = io({
+      transports: [
+      'websocket', 
+      'flashsocket', 
+      'htmlfile', 
+      'xhr-polling', 
+      'jsonp-polling', 
+      'polling'
+      ]
+    });
+    
+    
+    //when form gets submitted
+    document.forms["myForm"].onsubmit = function(){
+        var chatBoxBody = document.getElementsByClassName('chat-box-body')[0];
+        chatBoxBody.scrollTop = chatBoxBody.scrollHeight;
+        
+        //after submit the form focus on input field again
+        document.getElementById("m").focus();
+        
+        // emit the message to server
+        var input = document.getElementById("m").value;
+        socket.emit('chat message', input);
+        document.getElementById("m").value = '';
+    
+        return false; // so that page doesnt refresh after form submission
+        
+    }
+    
+    socket.on('chat message', function(msg){
+        // declare time object
+        console.log(msg);
+        var time = {
+            date : new Date().getDate(),
+            month : new Date().getMonth()+1,
+            year : new Date().getFullYear(),
+            hour: new Date().getHours(),
+            minute:new Date().getMinutes(),
+            second: new Date().getSeconds()
+        }
+    
+        //create all the necessary node to show messages
+        var pNode = document.createElement("p");
+        pNode.innerHTML = '<span class="avatar"></span>'+msg+'<span class="timeStamp">'+time.date+"/"+time.month+"/"+time.year+" "+time.hour+":"+time.minute+":"+time.second+'</span>';
+        
+        //create a hr element to give nice view
+        var hr = document.createElement("hr");
+        hr.className = 'hr';
+        
+        //append the node to element
+        document.getElementById("messages").appendChild(pNode);
+        document.getElementById("messages").appendChild(hr);
+    });
+
+----
+
+Download: webchatapp.zip

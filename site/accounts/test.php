@@ -7,9 +7,9 @@ password: >
 language: en
 role: admin
 history:
+  - contact
+  - resume
   - projects/health-clinic-demo-app
   - projects
-  - projects/project-b
-  - resume
-  - home
-token: a9db5dc485d2687becd468330fc34c415690fe34
+  - projects/lala-skin-essentials
+token: 73d0dd0925f9308be7228b60c3cacbe251a95e5f

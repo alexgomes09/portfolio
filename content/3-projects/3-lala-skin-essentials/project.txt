@@ -1,0 +1,43 @@
+Title: Lala Skin Essentials
+
+----
+
+Year: 2014
+
+----
+
+Sidenote: 
+
+----
+
+Projectlocation: http://lalaskinessentials.com/lala
+
+----
+
+Sourcecode: 
+
+----
+
+Download: 
+
+----
+
+Tags: Wordpress,WooCommerce
+
+----
+
+Text: 
+
+An e-commerce website I built by using wordpress + wooCommerce. 
+
+(image: lala.jpg)
+
+(image: all_product.jpg)
+**Figure-2: ** List of all products. I designed them all in photoshop
+
+(image: ingredients.jpg)
+**Figure-3: ** List of all ingredients that are being used in each product.
+
+----
+
+Codesnippet: 

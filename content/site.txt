@@ -14,7 +14,7 @@ Keywords: Kirby,CMS,file-based
 
 ----
 
-Copyright: <i class="fa fa-copyright"></i> 2009-(date: Year) | All rights reserved |  **(link: http://www.facebook.com/alexhansgomes text: Alex Gomes popup:yes)**
+Copyright: <i class="fa fa-copyright"> </i> 2009-(date: Year) | All rights reserved |  **(link: http://www.facebook.com/alexhansgomes text: Alex Gomes popup:yes)**
 
 ----
 

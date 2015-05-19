@@ -7,7 +7,7 @@
   <div class="text">
 
     <div id="projectInfo">
-      <b>Technology Used: </b><br>
+      <b>Technology Used: </b><br></br>
       <?php foreach($page->tags()->split(',') as $tag): ?>
         <?php echo $tag."<br>"?> 
       <?php endforeach ?>
@@ -15,41 +15,52 @@
       
       <?php echo $page->sidenote()->kirbytext() ?>
 
-      <a class="sourcecode" data-toggle="modal" data-target="#basicModal">Open Project</a>
-      <a class="sourcecode" href="<?php echo $page->sourcecode() ?>" target="_blank">Source Code</a>
-
-      <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header modal-title">
-              <button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Close</span></button>
-              <h4 class="modal-title"><?php echo $page->title() ?></h4>
-            </div>
-            <div class="modal-body">
-              <iframe class="lunch" src="<?php echo $page->url().'/Simplicity/index.html' ?>"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php if(!$page->projectlocation()->empty()): ?>
+        <a class="button" href="<?php echo $page->projectlocation() ?>" target="_blank">
+          <i class="fa fa-external-link"></i> Open Project
+        </a>
+      <?php endif ?>
+      <?php if(!$page->sourcecode()->empty()): ?>
+        <a class="button" href="<?php echo $page->sourcecode() ?>" target="_blank">
+          <i class="fa fa-code"></i> Source Code
+        </a>
+      <?php endif ?>
+      <?php if(!$page->download()->empty()): ?>
+        <a class="button" href="<?php echo $page->file($page->download())->url() ?>" target="_parent">
+          Download Project (<?php echo $page->file($page->download())->niceSize() ?>)
+        </a>
+      <?php endif ?>
     </div>
 
     <div id="projectDetails">
       <?php echo $page->text()->kirbytext() ?>
 
-     <pre class="highlight">
-    // Define our Function
-    function checkMeaningOfLife ( decimal, success ) {
-        if ( parseInt(decimal,10) === 42 ) {
-            window.console.log(success);
-        }
-    };
-    // Define our Variables
-    var str = 'The meaning of life is true',
-        decimal = 42.00;
-    // Fire our Function
-    checkMeaningOfLife(decimal,success);
-</pre>
-    </div>
+      <?php if(!$page->codesnippet()->empty()): ?>
+        <ul class="nav nav-tabs" role="tablist" id="codeTab">
+          <?php foreach($page->codesnippet()->yaml() as $codesnippet): ?>
+            <li role="presentation">
+              <a href="#<?php echo $codesnippet['filename'] ?>" aria-controls="home" role="tab" data-toggle="tab">
+                <?php echo $codesnippet['filename'] ?>
+              </a>
+            </li>
+          <?php endforeach ?>
+        </ul>
+
+        <div class="tab-content">
+          <?php foreach($page->codesnippet()->yaml() as $codesnippet): ?>
+            <div role="tabpanel" class="tab-pane" id="<?php echo $codesnippet['filename'] ?>">
+              <pre class="<?php echo $codesnippet['languagetype'] ?> line-numbers">
+                <code>
+                  <?php echo $codesnippet['code']?>
+                </code>
+              </pre>
+            </div>
+          <?php endforeach ?>
+        </div>
+      <?php endif ?>
+      
+
+    </div> <!-- projectDetails end -->
 
 
     <div class="nextprev cf" role="navigation">

@@ -15,25 +15,37 @@ fields:
   sidenote:
     label: Side Note (project information)
     type:  textarea
-  text:
-    label: Project Details
-    type:  textarea
-  tags:
-    label: Techology used
-    type:  tags
+  projectlocation:
+    label: Project Running http link
+    type: text
+    required: false
   sourcecode:
     label: Source Code
     type :url
+  download:
+    label: Download content (uploaded .zip folder name)
+    type: text
+  tags:
+    label: Techology used
+    type:  tags
+  text:
+    label: Project Details
+    type:  textarea
   codesnippet:
     label: Code Snippet
     type: structure
     entry: >
+      {{filename}} <br>
       {{languagetype}} <br>
       {{code}} <br>
     fields:
+      filename:
+        label: File Name (will become the tab name / tab header)
+        type: text
       languagetype:
-        label: What language is this? 
+        label: Language type (name of style based on prism)
         type: text
       code:
-        label: Paste code here
+        label: Code ( will be tab content)
         type : textarea
+      

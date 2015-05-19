@@ -224,8 +224,8 @@ nav {
     display: inline-block; }
 
   #Container .mix {
-    width: 31%;
-    margin: 10px; } }
+    width: 24%;
+    margin: 4px; } }
 /* Headings
 --------------------------------------------------*/
 h1 {
@@ -299,7 +299,7 @@ span.percentage {
   margin-right: 4%; }
 
 .attributes span {
-  top: -35px;
+  top: -40px;
   left: 1.5%;
   position: relative; }
 
@@ -341,57 +341,54 @@ progress::-moz-progress-bar {
 #projectInfo {
   margin-bottom: 1.5em;
   border-bottom: 1px solid black; }
+  #projectInfo .button {
+    background-color: #cccccc;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    margin-bottom: 1em; }
+    #projectInfo .button:hover {
+      background-color: lightgreen;
+      color: black;
+      border: none;
+      text-decoration: none; }
+    #projectInfo .button:focus {
+      color: black;
+      text-decoration: none; }
+  #projectInfo .lunch {
+    width: 100%;
+    height: 800px;
+    display: block; }
 
-.sourcecode {
-  background-color: #cccccc;
-  padding: 5px;
-  display: block;
-  text-align: center;
-  margin-bottom: 1em; }
-  .sourcecode:hover {
-    background-color: lightgreen;
-    color: black;
-    border: none;
-    text-decoration: none; }
-  .sourcecode:focus {
-    color: black;
-    text-decoration: none; }
-
-.lunch {
-  width: 100%;
-  height: 800px; }
-
-#projectDetails img {
-  margin: 0 auto; }
+#projectDetails {
+  margin-bottom: 25px; }
+  #projectDetails img {
+    margin: 0 auto; }
+  #projectDetails .tab-content .tab-pane {
+    height: 500px; }
+    #projectDetails .tab-content .tab-pane pre {
+      margin: 0px;
+      padding-top: 0px;
+      padding-right: 0px;
+      min-height: 100%;
+      padding-bottom: 0px; }
+      #projectDetails .tab-content .tab-pane pre code {
+        padding-bottom: 10px;
+        max-height: 500px;
+        top: -20px; }
 
 @media screen and (min-width: 50em) {
   #projectInfo {
     float: left;
-    width: 30%;
+    width: 25%;
     padding-right: 10px;
     border-bottom: none; }
 
   #projectDetails {
     float: right;
-    width: 70%;
+    width: 75%;
     border-left: 1px solid black;
     padding-left: 10px; } }
-/* Project Modal 
--------------------------------------------------- */
-.modal-header .close {
-  margin-top: 5px;
-  color: red; }
-
-.modal-header .close:hover {
-  opacity: 1;
-  color: red; }
-
-.modal-dialog {
-  width: 95%; }
-
-.modal-content {
-  border-radius: 0px; }
-
 /* Project teaser
 -------------------------------------------------- */
 .teaser {
@@ -409,9 +406,41 @@ progress::-moz-progress-bar {
 
   .teaser li:first-child {
     margin-left: 0; } }
+/* Contact Form
+-------------------------------------------------- */
+.contact-form {
+  background-color: #cccccc; }
+  .contact-form table {
+    width: 100%; }
+    .contact-form table tr {
+      display: block;
+      margin: 20px; }
+      .contact-form table tr td {
+        display: inline; }
+        .contact-form table tr td button {
+          background-color: red; }
+        .contact-form table tr td textarea {
+          min-height: 150px;
+          resize: none; }
+        .contact-form table tr td input, .contact-form table tr td input:focus, .contact-form table tr td textarea {
+          outline: none;
+          border: none;
+          padding: 10px 10px 10px 50px;
+          line-height: 25px;
+          width: 100%;
+          margin: 0px; }
+        .contact-form table tr td .fa {
+          background: white;
+          padding: 12.5px;
+          position: absolute; }
+
+@media screen and (min-width: 50em) {
+  .contact-form {
+    width: 600px; } }
 /* Next/Prev nav
 -------------------------------------------------- */
 .nextprev {
+  position: relative;
   padding: 0 0;
   clear: both; }
 

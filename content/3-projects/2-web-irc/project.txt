@@ -161,11 +161,11 @@ Codesnippet:
     // File : client.js
     var socket = io({
       transports: [
-      'websocket', 
-      'flashsocket', 
-      'htmlfile', 
-      'xhr-polling', 
-      'jsonp-polling', 
+      'websocket',
+      'flashsocket',
+      'htmlfile',
+      'xhr-polling',
+      'jsonp-polling',
       'polling'
       ]
     });
@@ -175,17 +175,17 @@ Codesnippet:
     document.forms["myForm"].onsubmit = function(){
         var chatBoxBody = document.getElementsByClassName('chat-box-body')[0];
         chatBoxBody.scrollTop = chatBoxBody.scrollHeight;
-        
+    
         //after submit the form focus on input field again
         document.getElementById("m").focus();
-        
+    
         // emit the message to server
         var input = document.getElementById("m").value;
         socket.emit('chat message', input);
         document.getElementById("m").value = '';
     
         return false; // so that page doesnt refresh after form submission
-        
+    
     }
     
     socket.on('chat message', function(msg){
@@ -203,11 +203,11 @@ Codesnippet:
         //create all the necessary node to show messages
         var pNode = document.createElement("p");
         pNode.innerHTML = '<span class="avatar"></span>'+msg+'<span class="timeStamp">'+time.date+"/"+time.month+"/"+time.year+" "+time.hour+":"+time.minute+":"+time.second+'</span>';
-        
+    
         //create a hr element to give nice view
         var hr = document.createElement("hr");
         hr.className = 'hr';
-        
+    
         //append the node to element
         document.getElementById("messages").appendChild(pNode);
         document.getElementById("messages").appendChild(hr);

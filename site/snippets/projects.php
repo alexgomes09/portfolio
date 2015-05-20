@@ -1,7 +1,7 @@
 <h2>Latest projects</h2>
 
 <ul class="teaser cf">
-  <?php foreach(page('projects')->children()->visible()->limit(3)->flip() as $project): ?>
+  <?php foreach(page('projects')->children()->visible()->flip()->limit(3) as $project): ?>
     <li>
       <h3>
         <a href="<?php echo $project->url() ?>">
@@ -12,7 +12,8 @@
         <?php echo $project->text()->excerpt(90) ?> 
         <a href="<?php echo $project->url() ?>">read&nbsp;more&nbsp;→</a>
       </p>
-      <?php if($image = $project->images()->sortBy('sort', 'asc')->last()): ?>
+
+      <?php if($image = $project->images()->sortBy('sort', 'asc')->first()): ?>
         <a href="<?php echo $project->url() ?>">
           <img src="<?php echo $image->url() ?>" alt="<?php echo $project->title()->html() ?>">
         </a>

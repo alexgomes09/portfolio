@@ -16,6 +16,10 @@ Projthumb:
   category: Wordpress
   link: projects/lala-skin-essentials
   thumb: lalaskinessentials.jpg
+- 
+  category: Wordpress
+  link: projects/scarborough-afro-carib-fest
+  thumb: sacf.jpg
 
 ----
 

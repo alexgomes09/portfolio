@@ -410,7 +410,7 @@ progress::-moz-progress-bar {
 -------------------------------------------------- */
 .contact-form {
   background-color: #cccccc;
-  margin-bottom: 25px; }
+  margin-bottom: 30px; }
   .contact-form table {
     width: 100%; }
     .contact-form table tr {
@@ -439,7 +439,6 @@ progress::-moz-progress-bar {
 -------------------------------------------------- */
 .social-media .fa-facebook-square, .social-media .fa-linkedin-square, .social-media .fa-github-square, .social-media .fa-twitter-square {
   transition: color .3s, background .3s;
-  border-radius: 100px;
   color: gray; }
 .social-media .fa-github-square:hover {
   color: black; }
@@ -462,6 +461,12 @@ progress::-moz-progress-bar {
 @media screen and (min-width: 50em) {
   .social-media table {
     float: right; } }
+/* Map view
+-------------------------------------------------- */
+.map {
+  width: 100%;
+  height: 400px; }
+
 /* Next/Prev nav
 -------------------------------------------------- */
 .nextprev {

@@ -30,7 +30,29 @@ $(document).ready(function() {
 
     });
 
-    $('#codeTab a:first').tab('show')
+    // project tab functionality
+    $('#codeTab a:first').tab('show');
+
+
+
+    // Google map view fuinctionality in contact page
+    var center = new google.maps.LatLng(43.744275,-79.273930);
+    function initialize() {
+      var mapProp = {
+        center:center,
+        zoom:15,
+        mapTypeIds:['HYBRID','SATELLITE','ROADMAP','TERRAIN']
+    };
+    var map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+    var marker = new google.maps.Marker({
+        position:center,
+        icon:'assets/images/map_marker.png',
+        animation:google.maps.Animation.BOUNCE
+    });
+    marker.setMap(map);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
 
 
     // get parameter for filter based on url query http://localhost/portfolio/projects?filter=Node

@@ -18,6 +18,62 @@ for more information: http://getkirby.com/license
 
 c::set('license', 'put your license key here');
 c::set('markdown.extra',true);
+
+
+/**
+ * Mandril mail driver
+ */
+email::$services['mandrill'] = function($email) {
+
+	require_once 'mandrill/Mandrill.php'; 
+
+	if(empty($email->options['key']))    throw new Error('Missing Mandrill API key');
+
+	try{
+		$mandrill = new Mandrill($email->options['key']);
+		$message = array(
+			'html' => '<h1 style="color:red">'.$email->body.'</h1>',
+			'subject' => $email->subject,
+			'from_email' => $email->from,
+			'from_name' => $email->name,
+			'to' => array(
+				array(
+					'email' => $email->to,
+					'name' => 'Alex Gomes',
+					'type' => 'to'
+					),
+				array(
+					'email' => 'alex.09hg@gmail.com',
+					'name' => 'Alex Gomes',
+					'type' => 'to'
+					),
+				),
+			);
+		$async = false;
+		$ip_pool = 'Main Pool';
+		$result = $mandrill->messages->send($message, $async, $ip_pool);
+	}
+	catch(Mandrill_Error $e){
+  	 // Mandrill errors are thrown as exceptions
+		echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+    // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+		throw $e;
+	}
+
+
+
+	// $email->response = remote::post($url, array(
+	// 	'data'    => "$message",
+	// 	'headers' => '$headers'
+	// 	));
+
+	// if($email->response->code() != 200) {
+	// 	throw new Error('The mail could not be sent!');
+	// }
+
+
+
+};
 /*
 
 ---------------------------------------

@@ -19,6 +19,7 @@ for more information: http://getkirby.com/license
 c::set('license', 'put your license key here');
 c::set('markdown.extra',true);
 
+r::ajax();
 
 /**
  * Mandril mail driver
@@ -60,16 +61,6 @@ email::$services['mandrill'] = function($email) {
 		throw $e;
 	}
 
-
-
-	// $email->response = remote::post($url, array(
-	// 	'data'    => "$message",
-	// 	'headers' => '$headers'
-	// 	));
-
-	// if($email->response->code() != 200) {
-	// 	throw new Error('The mail could not be sent!');
-	// }
 
 
 

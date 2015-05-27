@@ -31,25 +31,24 @@ $(document).ready(function() {
     });
 
     // project tab functionality
-    $('#codeTab a:first').tab('show');
+    $('#codeTab a:first').tab('show')
 
     // Ajax form request
     $('form').on('submit', function (event) {
-        console.log($('form').serialize());
-        console.log(window.location.pathname.replace(/[^\\\/]*$/, ''))
         $.ajax({
             type: 'POST',
             url: $(this).prop('action'),
             data: $(this).serialize(),
-            dataType: 'json',
-            encode:true,
-            success: function(data){
-                console.log(data);
-            },
-            error: function(xhr,ajaxoptions,thrownError){
-                console.log(xhr.status)  
+            dataType:'json',
+            encode:true
+        }).success(function(data){
+            console.log(data.name)
+            console.log(data.success)
+            if(data.success == true){
+                $('.modal-body').html(data.message);
+                $('.modal').modal();
             }
-        })
+        });
         event.preventDefault();
 
     });

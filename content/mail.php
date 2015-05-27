@@ -1,7 +1,10 @@
 <?php 
+//header("content-type:");
 
 $errors = array();
 $data = array();
+
+$name = "HEY";
 
 if (empty($_POST['name']))
 	$errors['name'] = 'Name is required.';
@@ -13,15 +16,16 @@ if (empty($_POST['body']))
 	$errors['body'] = 'Message is required.';
 
 if(!empty($errors)){
-
 	$data['success'] = false;
 	$data['errors'] = $errors;
-
-	//echo "<script>$('.modal').modal();</script>";
 	//header("Location:http://localhost/portfolio/contact");
 }else{
 	$data['success'] = true;
-	$data['message'] = 'Success!';	
+	$data['message'] = '<h1>I thank you for contacting me.</br></br>If needed I will contact you momentarily.</h1>';	
+
+	$data['name'] = $_POST['name'];
+	$data['email'] = $_POST['email'];
+	$data['body'] = $_POST['body'];
 }
 echo json_encode($data);
 

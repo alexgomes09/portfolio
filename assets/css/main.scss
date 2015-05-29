@@ -93,7 +93,7 @@ body {
   font-size: 1.25em;
   line-height: 1.5em;
   padding: 1em 1.5em 1.5em 1.5em;
-  max-width:65em;
+  max-width:60em;
   background: #fff;
   color: #222;
 }
@@ -224,8 +224,12 @@ nav{
 }
 #Container .mix{
   display: none;
-  width: 70%;
+  width: 100%;
   margin: 5px;
+  img{
+    display: inline-block;
+    width: 100%;
+  }
 }
 .filter{
   background-color: #E6E6E6;
@@ -249,7 +253,7 @@ nav{
     display: inline-block;
   }
   #Container .mix{
-    width: 24%;
+    width: 258px;
     margin:4px;
   }
 }

@@ -42,59 +42,83 @@ $(document).ready(function() {
             dataType:'json',
             encode:true
         }).success(function(data){
-            console.log(data.name)
-            console.log(data.success)
+            console.log(data)
             if(data.success == true){
                 $('.modal-body').html(data.message);
                 $('.modal').modal();
+                $("#content-error-body, #content-error-name, #content-error-email").html('');
+            }else{
+                if(data.errors.body){
+                    $("#content-error-body").html(data.errors.body);
+                }else{
+                    $("#content-error-body").html('');
+                }
+                if(data.errors.name){
+                    $("#content-error-name").html(data.errors.name);
+                }else{
+                    $("#content-error-name").html('');
+                }
+                if(data.errors.email){
+                    $("#content-error-email").html(data.errors.email);
+                }else{
+                    $("#content-error-email").html('');
+                }
             }
         });
         event.preventDefault();
+    });
 
+    //form validation
+    $('.contact-form input[name=name]').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z ]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        return false;
     });
 
 
-
-// Google map view fuinctionality in contact page
-var center = new google.maps.LatLng(43.744275,-79.273930);
-function initialize() {
-  var mapProp = {
-    center:center,
-    zoom:15,
-    mapTypeIds:['HYBRID','SATELLITE','ROADMAP','TERRAIN']
-};
-var map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
-var marker = new google.maps.Marker({
-    position:center,
-    icon:'assets/images/map_marker.png',
-    animation:google.maps.Animation.BOUNCE
-});
-marker.setMap(map);
+    // Google map view fuinctionality in contact page
+    var center = new google.maps.LatLng(43.744275,-79.273930);
+    function initialize() {
+      var mapProp = {
+        center:center,
+        zoom:15,
+        mapTypeIds:['HYBRID','SATELLITE','ROADMAP','TERRAIN']
+    };
+    var map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+    var marker = new google.maps.Marker({
+        position:center,
+        icon:'assets/images/map_marker.png',
+        animation:google.maps.Animation.BOUNCE
+    });
+    marker.setMap(map);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
 
-// get parameter for filter based on url query http://localhost/portfolio/projects?filter=Node
-var link = window.location.href;
-if (link) {
-    var filter = getUrlParameter('filter');
-    setTimeout( function () { $('[data-filter="'+filter+'"]').click(); }, 0);
-} 
+    // get parameter for filter based on url query http://localhost/portfolio/projects?filter=Node
+    var link = window.location.href;
+    if (link) {
+        var filter = getUrlParameter('filter');
+        setTimeout( function () { $('[data-filter="'+filter+'"]').click(); }, 0);
+    } 
 
-function getUrlParameter(sParam)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
+    function getUrlParameter(sParam)
     {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) 
         {
-            return "."+sParameterName[1];
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam) 
+            {
+                return "."+sParameterName[1];
+            }
         }
-    }
-}  
+    }  
 
 
 

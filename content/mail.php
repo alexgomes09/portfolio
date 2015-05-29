@@ -1,10 +1,12 @@
 <?php 
 //header("content-type:");
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
 
+require_once 'mandrill/Mandrill.php'; 
 $errors = array();
 $data = array();
-
-$name = "HEY";
 
 if (empty($_POST['name']))
 	$errors['name'] = 'Name is required.';
@@ -18,35 +20,49 @@ if (empty($_POST['body']))
 if(!empty($errors)){
 	$data['success'] = false;
 	$data['errors'] = $errors;
-	//header("Location:http://localhost/portfolio/contact");
 }else{
 	$data['success'] = true;
-	$data['message'] = '<h1>I thank you for contacting me.</br></br>If needed I will contact you momentarily.</h1>';	
 
 	$data['name'] = $_POST['name'];
 	$data['email'] = $_POST['email'];
 	$data['body'] = $_POST['body'];
+	
+	
+
+
+	$data['message'] = '<h1>'.$data['name'].', thank you for contacting me.</br></br>If needed I will contact you momentarily.</h1>';	
 }
-echo json_encode($data);
+//echo json_encode($data);
 
-
-
-// $email = new Email(array(
-// 	'to'      => 'alex_09hg@yahoo.com',
-// 	'from'    => 'john@doe.com',
-// 	'name'	  => 'John Doe',
-// 	'subject' => 'a message from alexgomes.tk',
-// 	'body'    => 'Hey, this is a test email!', 
-// 	'service' => 'mandrill',
-// 	'options' => array(
-// 		'key'    => '9yPYgTCH5Mnrd8GqqerSkA'
-// 		)
-// 	));
-
-// if($email->send()) {
-// 	echo 'The email has been sent. I will get you shortly';
-// } else {
-// 	echo $email->error()->message();
-// }
+		try{
+		$mandrill = new Mandrill($email->options['key']);
+		$message = array(
+			'html' => '<h1 style="color:red">'.$email->body.'</h1>',
+			'subject' => $email->subject,
+			'from_email' => $email->from,
+			'from_name' => $email->name,
+			'to' => array(
+				array(
+					'email' => $email->to,
+					'name' => 'Alex Gomes',
+					'type' => 'to'
+					),
+				array(
+					'email' => 'alex.09hg@gmail.com',
+					'name' => 'Alex Gomes',
+					'type' => 'to'
+					),
+				),
+			);
+		$async = false;
+		$ip_pool = 'Main Pool';
+		$result = $mandrill->messages->send($message, $async, $ip_pool);
+	}
+	catch(Mandrill_Error $e){
+  	 // Mandrill errors are thrown as exceptions
+		echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+    // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+		throw $e;
+	}
 
 ?>

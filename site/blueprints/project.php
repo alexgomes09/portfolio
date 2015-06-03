@@ -23,7 +23,7 @@ fields:
     label: Source Code
     type :url
   download:
-    label: Download content (uploaded .zip folder name)
+    label: Download content (uploaded .zip file name)
     type: text
   tags:
     label: Techology used

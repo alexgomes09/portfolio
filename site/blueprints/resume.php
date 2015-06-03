@@ -8,7 +8,7 @@ fields:
 		label:
 		type:
 	skills:
-		label: Skill Sets
+		label: Development Skill Sets
 		type: structure
 		entry: >
 			{{skill}} <br>
@@ -21,7 +21,22 @@ fields:
 				label: Skill range out of 100
 				type: number
 				min:0
-				max:100 
+				max:100
+	designskills:
+		label: Design Skill Sets
+		type: structure
+		entry: >
+			{{skill}} <br>
+			{{range}}
+		fields:
+			skill:
+				label: Design Skill Name
+				type: text
+			range:
+				label: Design Skill range out of 100
+				type: number
+				min:0
+				max:100 			 
 	experience:
 		label: Work Experience
 		type: structure
@@ -40,14 +55,10 @@ fields:
 				type: text	
 			from:
 				label: From (YYYY)
-				type: number
-				min:2000
-				max:3000
+				type: text
 			to:
 				label: Until (YYYY)
-				type: number
-				min:2000
-				max:3000
+				type: text
 			description:
 				label: Job Description
 				type: textarea
@@ -72,12 +83,7 @@ fields:
 				type: text	
 			from:
 				label: From (YYYY)
-				type: number
-				min:2000
-				max:3000
+				type: text
 			to:
 				label: Until (YYYY)
-				type: number
-				min:2000
-				max:3000
-		
+				type: text

@@ -7,9 +7,9 @@ password: >
 language: en
 role: admin
 history:
-  - contact
-  - projects/web-irc
-  - projects/lala-skin-essentials
+  - resume
   - projects
-  - projects/scarborough-afro-carib-fest
-token: cbe229d664345946a82efebf44bd9c1361c667fe
+  - projects/mind-body-and-soul
+  - projects/duck-hunter
+  - projects/doctor-patient-app
+token: 4c09a650313fce25d0b9b9af2d8c1d8f7f129e81

@@ -20,7 +20,19 @@ Projthumb:
   category: Wordpress
   link: projects/scarborough-afro-carib-fest
   thumb: sacf.jpg
+- 
+  category: Node Angular
+  link: projects/doctor-patient-app
+  thumb: doctorpatientapp.png
+- 
+  category: Games
+  link: projects/duck-hunter
+  thumb: duck_hunter.jpg
+- 
+  category: Wordpress
+  link: projects/mind-body-and-soul
+  thumb: mind_body_soul.jpg
 
 ----
 
-Filters: Node,Angular,Wordpress
+Filters: Node,Angular,Wordpress,Games

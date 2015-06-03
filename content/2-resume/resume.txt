@@ -5,29 +5,32 @@ Title: Resume
 Skills: 
 
 - 
-  skill: 'HTML5, CSS3 - 5 years'
-  range: 95
+  skill: 'HTML5, CSS3 - 3 years'
+  range: 90
 - 
-  skill: 'Javascript, jQuery - 4 years'
+  skill: 'Javascript, jQuery - 3 years'
   range: 80
 - 
-  skill: 'AngularJS - 2 years'
+  skill: 'AngularJS, Node, ExpressJs, MondoDB - 2 years'
   range: 70
 - 
-  skill: 'C# (.Net, Xna, Win Form) - 4 years'
+  skill: 'C# (.Net, Xna, Win Form) - 3.5 years'
   range: 75
 - 
   skill: 'Java (Swing, AWT) - 2 years'
   range: 65
+- 
+  skill: 'Android - 1 year'
+  range: 60
 
 ----
 
 Experience: 
 
 - 
-  company: 'Mind Body and Soul '
+  company: Mind Body and Soul
   role: SEO specialist
-  from: 2015
+  from: 'Jan 2015 '
   to: 2015
   description: |
     - troubleshout SEO issues
@@ -35,7 +38,7 @@ Experience:
 - 
   company: Heritage Skills Development Centre
   role: Web Developer
-  from: 2013
+  from: May 2013
   to: 2015
   description: |
     - Designing and creating webpage from scratch in Photoshop, HTML, CSS, JavaScript
@@ -44,17 +47,17 @@ Experience:
 - 
   company: Novellus Graphics Resource Inc
   role: Label Designer
-  from: 2011
-  to: 2012
+  from: Dec 2011
+  to: Jul 2012
   description: |
     - Worked with other employee to create various products’ label and packaging.
     - Trouble shooting technical problems, installing hardware and software.
     - Created comprehensive design for different company product packages.
 - 
-  company: 'Zellers '
-  role: 'Sales Representative '
-  from: 2008
-  to: 2010
+  company: Zellers
+  role: Sales Representative
+  from: Sep 2008
+  to: Apr 2010
   description: |
     - Worked closely with sales management team
     - Introduced new products to general public (Electronic department)
@@ -68,11 +71,22 @@ Education:
   schoolname: Centennial College
   major: 'Software Engineering Technology & Interactive Gaming'
   degreetype: Associate Degree
-  from: 2012
-  to: 2015
+  from: Sept 2012
+  to: Apr 2015
 - 
   schoolname: Centennial College
   major: Art and Design Foundation Studies
   degreetype: Certificate
-  from: 2011
-  to: 2012
+  from: Sep 2011
+  to: Apr 2012
+
+----
+
+Designskills: 
+
+- 
+  skill: 'Photoshop - 5 years'
+  range: 90
+- 
+  skill: 'Illustrator - 3 years'
+  range: 80

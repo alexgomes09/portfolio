@@ -1,0 +1,621 @@
+Title: Doctor Patient App
+
+----
+
+Year: 2015
+
+----
+
+Sidenote: 
+
+----
+
+Projectlocation: https://doctorpatientapp.herokuapp.com/
+
+----
+
+Sourcecode: https://github.com/alexgomes09/PatientDoctorApp
+
+----
+
+Download: patientdoctorapp.zip
+
+----
+
+Tags: NodeJs,ExpressJs,AngularJs,MongoDB,PassportJs
+
+----
+
+Text: 
+
+It was an individual final project for Emerging Technology class. The requirement was to use MEAN stack and demonstrate small clinical app system. Where there is relation between each doctor and their patient. Also login functionality using PassportJs for doctor and patient
+(image: pic1.jpg)
+**Figure-1:** Doctor login form. There is also a form for registering patient
+(image: pic2.jpg)
+**Figure-2:** Main dashboard, list of patients, query database based on patient's last name, delete patient
+(image: pic3.jpg)
+**Figure-3:** Each patient is clickable and that will bring up single patient's details
+(image: pic4.jpg)
+**Figure-4:** Also list of patient can be easily accessed from dashboard
+
+----
+
+Codesnippet: 
+
+- 
+  filename: Server
+  languagetype: language-javascript
+  code: |
+    |
+        //server.js
+        var bodyParser =require('body-parser');
+        var http = require('http');
+        var models = require('./Public/Model/User');
+        var express = require('express');
+        var app = express();
+        var expressSession = require('express-session');
+        var cookieParser = require('cookie-parser');
+        var passport = require('passport');
+        var LocalStrategy = require('passport-local').Strategy;
+    
+        // mongo DB dependencies
+        var mongoose = require('mongoose');
+    
+        // create mongoose connection
+        mongoose.connect('mongodb://patientdoctorapp:patientdoctorapp@ds061391.mongolab.com:61391/patientdoctordb');
+    
+        // pass app bodyParser and mongoose as a paramenter to router.js file
+        require('./router')(app,bodyParser,mongoose);
+        app.use( bodyParser.urlencoded({ extended: true }) );
+        app.use(express.static( __dirname + '/Public'));
+        app.use(expressSession({ secret: 'keyboard cat', saveUninitialized: true, resave: true }));
+        app.use(passport.initialize());
+        app.use(passport.session());
+    
+        passport.serializeUser(function(user, done) {
+            console.log(user);
+          done(null, user._id);
+        });
+    
+        passport.deserializeUser(function(id, done) {
+          models.Doctor.findOne({"_id":id}, function (err, user) {
+            done(err, user);
+          });
+        });
+    
+        passport.use('local',new LocalStrategy(function(username, password, done) {
+          models.Doctor.findOne({ username: username }, function(err, user) {
+            if (err) { console.log(err); return done(err); }
+            if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
+            user.comparePassword(password, function(err, isMatch) {
+              if (err) return done(err);
+              if(isMatch) {
+                return done(null, user);
+              } else {
+                return done(null, false, { message: 'Invalid password' });
+              }
+            });
+          });
+        }));
+    
+        // home route
+        app.get('/', function (req, res) {
+            res.sendFile( __dirname + '/Public/Views/index.html');
+        });
+    
+        app.post('/login',
+          passport.authenticate ('local', { successRedirect: '/#/home',
+                                           failureRedirect: '/#/doctorLogin'
+                                            })
+        );
+    
+        // takes care of logout route
+        app.get('/logout', function(req, res){
+          req.logout();
+          res.redirect('/#/doctorLogin');
+        });
+    
+        //check if user is logged in or not
+        app.get('/checkLogin', function(req, res){
+            if(req.user == null)
+            {
+              res.send({message: 'Not logged in.'})
+            }
+        });
+    
+    
+        app.listen(process.env.PORT, process.env.IP);
+    
+        console.log('port running at 3000');
+- 
+  filename: Router
+  languagetype: language-javascript
+  code: |
+    |
+        //router.js
+        var models = require('./Public/Model/User');
+        var express = require('express');
+        var router = express.Router();
+    
+        module.exports = function (app, bodyParser) {
+        	var doctor, patient;
+    
+        	router.use(bodyParser.json());
+    
+        	//router to login doctor and chec if it exist or not
+        	/*router.route('/getDoctor').get(function (req, res) {
+    
+        		var firstName = req.query.firstName;
+        		var lastName = req.query.lastName;
+        		models.Doctor.findOne({
+        			firstName: firstName,
+        			lastName: lastName
+        		}, function (err, data) {
+        			if (err) {
+        				console.log(err);
+        			} else {
+        				res.status(200).send(data);
+        			}
+        		})
+        	});*/
+    
+    
+        	// get all the doctor and send it back to angular
+        	router.route('/getAllDoctor').get(function (req, res) {
+        		var q = models.Doctor.find({});
+        		q.exec(function (err, data) {
+        			res.setHeader('Content-Type', 'application/json');
+        			res.end(JSON.stringify(data));
+        		})
+        	})
+    
+        	//get patient and and send data back to whoever made the request
+        	router.route('/getPatient').get(function (req, res) {
+        		var q = models.Patient.find({});
+        		q.exec(function (err, data) {
+        			res.setHeader('Content-Type', 'application/json');
+        			res.end(JSON.stringify(data));
+        		})
+    
+        	});
+    
+        	// handeles search patient with patient lastName or doctor lastName
+        	router.route('/searchPatient').get(function (req, res) {
+    
+        		var lastName = req.query.data;
+    
+        		models.Patient.find({
+        			$or: [{
+        				"lastName": lastName
+        			}, {
+        				"familyDoctor.lastName": lastName
+        			}]
+        		}, function (err, data) {
+        			if (err) {
+        				console.log(err);
+        			} else {
+        				res.end(JSON.stringify(data));
+        			}
+        		})
+        	})
+    
+        	//save the doctor. Basically register a new doctor
+        	router.route('/submitDoctor').post(function (req, res) {
+    
+        		//create doctor model;
+        		doctor = new models.Doctor({
+        			"username":req.body.username,
+        			"password":req.body.password,
+        			"firstName": req.body.firstName,
+        			"lastName": req.body.lastName
+        		});
+    
+        		//save doctor in doctor model
+        		doctor.save(function (err, data) {
+        			if (err) {
+        				console.log(err);
+        			} else
+        				console.log(data);
+        			res.sendStatus(200);
+        		});
+        	});
+    
+        	// delete the patient based on the firstName and lastName
+        	router.route('/deletePatient').delete(function (req, res) {
+        		var firstName = req.query.firstName;
+        		var lastName = req.query.lastName;
+        		models.Patient.remove({
+        			firstName: firstName,
+        			lastName: lastName
+        		}, function (err, data) {
+        			if (err) {
+        				console.log(err);
+        			} else {
+        				console.log("Patient Deleted") // if success then output patient deleted message
+        				res.status(200).send(firstName + ' ' + lastName + " was deleted");
+        			}
+        		})
+    
+        	})
+    
+        	//register a patient in patient model
+        	router.route('/submitPatient').post(function (req, res) {
+    
+        		//create patient model
+        		patient = new models.Patient({
+        			"firstName": req.body.firstName,
+        			"lastName": req.body.lastName,
+        			"visits": {
+        				"complaint": req.body.complaint,
+        				"billingAmount": req.body.billingAmount
+        			},
+        			"age": req.body.age,
+        			"familyDoctor": [{
+        				firstName: req.body.familyDoctor.firstName,
+        				lastName: req.body.familyDoctor.lastName,
+        			}],
+        			"createdAt": req.body.createdAt,
+        			"lastModified": req.body.lastModified
+        		});
+    
+        		//save the patient
+        		patient.save(function (err, data) {
+        			if (err) {
+        				console.log(err); // show the err
+        			} else
+        				console.log(data)
+        			res.sendStatus(200); //if succeed then send 200 status
+        		});
+        	});
+    
+        	// update the patient based on the ID that was sent from angular
+        	router.route('/updatePatient').post(function (req, res) {
+        		var id = req.body._id;
+        		models.Patient.update({
+        			_id: id
+        		}, {
+        			"firstName": req.body.firstName,
+        			"lastName": req.body.lastName,
+        			visits: {
+        				complaint: req.body.visits.complaint,
+        				billingAmount: req.body.visits.billingAmount
+        			},
+        			age: req.body.age,
+        			familyDoctor: [{
+        				firstName: req.body.familyDoctor[0].firstName,
+        				lastName: req.body.familyDoctor[0].lastName
+        			}],
+        			createdAt: req.body.createdAt,
+        			lastModified: req.body.lastModified
+        		}, function (err, data) {
+        			if (err) {
+        				console.log(err);
+        			} else {
+        				res.setHeader('Content-Type', 'application/json');
+        				res.end(JSON.stringify("Patient was updated")); // if success then end the response and send success message
+        			}
+        		});
+        	});
+    
+        	app.use('/', router);
+    
+        };
+- 
+  filename: User
+  languagetype: language-javascript
+  code: |
+    // Model/user.js
+    var mongoose = require('mongoose');
+    var bcrypt = require("bcrypt");
+    
+    //doctorSchema for doctorModel
+    var doctorSchema = new mongoose.Schema({
+    	"username": String,
+    	"password":String,
+    	"firstName": String,
+    	"lastName": String
+    });
+    
+    // Bcrypt middleware
+    doctorSchema.pre('save', function(next) {
+    	var user = this;
+    
+    	if(!user.isModified('password')) return next();
+    
+    	bcrypt.genSalt(10, function(err, salt) {
+    		if(err) return next(err);
+    
+    		bcrypt.hash(user.password, salt, function(err, hash) {
+    			if(err) return next(err);
+    			user.password = hash;
+    			next();
+    		});
+    	});
+    });
+    
+    // Password verification
+    doctorSchema.methods.comparePassword = function(candidatePassword, cb) {
+    	bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    		if(err) return cb(err);
+    		cb(null, isMatch);
+    	});
+    };
+    
+    //patientSchema for patientModel
+    var patientSchema = new mongoose.Schema({
+    	"firstName": String,
+    	"lastName": String,
+    	visits: {
+    		complaint: String,
+    		billingAmount: {type:Number}
+    	},
+    	age: {type:Number},
+    	familyDoctor: [doctorSchema],
+    	createdAt: {type:Date},
+    	lastModified: Date
+    });
+    
+    //patient Model and calling patientSchema
+    var Patient = mongoose.model('Patient', patientSchema)
+    
+    var Doctor = mongoose.model('Doctor', doctorSchema);
+    // mongoose model for Doctor
+    //export patient and doctor model
+    module.exports = {
+    	Doctor: Doctor,
+    	Patient: Patient
+    };
+- 
+  filename: App
+  languagetype: language-javascript
+  code: |
+    // app.js
+    var app = angular.module("DoctorPatientApp", ['ngRoute']);
+    
+    app.config(['$routeProvider',
+        function ($routeProvider) {
+    		$routeProvider.
+    		when('/home', {
+    			templateUrl: 'Views/patientList.html',
+    			controller: 'PatientListController'
+    		}).
+    		when('/doctorRegister', {
+    			templateUrl: 'Views/doctorRegister.html',
+    			controller: 'DoctorRegisterController'
+    		}).
+    		when('/doctorLogin', {
+    			templateUrl: 'Views/doctorLogin.html',
+    			controller: 'DoctorLogInController'
+    		}).
+    		when('/patient', {
+    			templateUrl: 'Views/patient.html',
+    			controller: 'PatientController'
+    		}).
+    		when('/patientDetails', {
+    			templateUrl: 'Views/patientDetails.html',
+    			controller: 'PatientDetailsController'
+    		}).
+    		otherwise({
+    			redirectTo: '/doctorLogin'
+    		});
+        }]);
+    
+    //Doctor register controller which handels registering doctor
+    app.controller("DoctorRegisterController", function ($scope, $location, DoctorPatientService) {
+    
+    	$scope.submitDoctor = function (doctor) {
+    		DoctorPatientService.putDoctor(doctor).success(function (data) { // if register doctor is success then do following
+    			alert("Doctor was registered"); // alert that doctor was registered
+    			$location.path('/doctorLogin'); // if registered the take to doctor login for doctor to login
+    		});
+    	}
+    });
+    
+    // doctor login controller which handeles login as a doctor
+    app.controller("DoctorLogInController", function ($scope, $location, DoctorPatientService) {
+    
+    });
+    
+    // patient Controller which get all the doctor to show in the combo box
+    app.controller("PatientController", function ($scope, $window, $location, DoctorPatientService) {
+    
+    	DoctorPatientService.checkLogin().success(function (data){
+    		if(data.message != null)	{
+    		 $location.path('/doctorLogin');
+    		 return;
+    		}
+    	});
+    	
+    	DoctorPatientService.getAllDoctor().success(function (data) { // show doctor in the combo box
+    		$scope.familyDoctors = data;
+    	});
+    
+    	// register patient 
+    	$scope.submitPatient = function (patient) {
+    		DoctorPatientService.putPatient(patient).success(function () {
+    			alert("Patient was created")
+    			$location.path("/home"); // take user to home page and reload page
+    			$window.location.reload()
+    		});
+    	}
+    });
+    
+    // patient lsit controller which is the main controller.
+    app.controller("PatientListController", function ($scope, $route, $window, $location, DoctorPatientService) {
+    	
+    	DoctorPatientService.checkLogin().success(function (data){
+    		if(data.message != null)	{
+    		 $location.path('/doctorLogin');
+    		 return;
+    		}
+    	});
+    	
+    	if (Object.keys(DoctorPatientService.getCurrentDoctor()).length > 0) {
+    		$scope.currentDoctor = DoctorPatientService.getCurrentDoctor().firstName + " " + DoctorPatientService.getCurrentDoctor().lastName;
+    	}
+    
+    	function getPatient() {
+    		DoctorPatientService.getPatient().success(function (patient) { // get patient and show then in a list of 10
+    			$scope.currentPage = 0;
+    			$scope.pageSize = 10;
+    			$scope.data = patient;
+    			$scope.numberOfPages = function () {
+    				return Math.ceil($scope.data.length / $scope.pageSize);
+    			}
+    			for (var i = 0; i < $scope.data.length; i++) {
+    				$scope.patientModel = $scope.data; // set the patient as patient model
+    			}
+    		});
+    	}
+    
+    	getPatient(); // call get patient method for the lsit to work
+    
+    	//if user select patient then take user to patietn Details form
+    	$scope.selectedPatient = function (data) {
+    		DoctorPatientService.setPatientDetails(data);
+    		$location.path('/patientDetails');
+    	};
+    
+    	// delete patient handels the patient to delete
+    	$scope.deletePatient = function (data) {
+    		console.log(data);
+    
+    		DoctorPatientService.deletePatient(data).success(function (data) { // if success then delete the patient 
+    			alert(data) // alert that patient was deleted and reload the page
+    			$window.location.reload();
+    		});
+    	}
+    
+    	// search patient from search bar which gets the patient and show in the lsit
+    	$scope.searchPatient = function (data) {
+    		DoctorPatientService.searchPatient(data).success(function (data) {
+    			console.log(data);
+    			if (data.length > 0) {
+    				$scope.patientModel = data;
+    			} else {
+    				alert("User doesnt exist"); // if search come out null then  show this alert message
+    				$scope.patientModel = getPatient(); // call the getpatient to populate will all the list
+    			}
+    		});
+    	}
+    });
+    
+    // Patient details controller deals with filling up all the inputs with whatever patient  user clicked on
+    app.controller("PatientDetailsController", function ($scope, $location, $window, DoctorPatientService) {
+    	
+    	DoctorPatientService.checkLogin().success(function (data){
+    		if(data.message != null)	{
+    		 $location.path('/doctorLogin');
+    		}
+    	});
+    	
+    	$scope.patient = DoctorPatientService.getPatientDetails();
+    
+    	$scope.editPatient = function (patient) { // allow user the edit the patietent
+    		console.log(patient);
+    		DoctorPatientService.updatePatient(patient).success(function (data) { // update the patietn based on new input
+    			alert(data);
+    			console.log(data)
+    			$location.path('/home'); // if edited then take user to home page and reload page
+    			$window.location.reload();
+    		});
+    	}
+    })
+    
+    // angular service that handles with all the service
+    app.service("DoctorPatientService", ['$http', function ($http) {
+    
+    	var currentDoctor = {};
+    	var patientDetails = {};
+    	
+    	// getAll doctor service
+    	this.getAllDoctor = function (data) {
+    		return $http.get('/getAllDoctor', data);
+    	}
+    	
+    	this.checkLogin = function (data){
+    		return $http({url: '/checkLogin', method:"GET"})
+    	}
+    
+    	//get Doctor based on firstName and lastName
+    	this.doctorLogin = function (data) {
+    		return $http({url: '/login', method:"POST", data:data});
+    	};
+    
+    	//put the doctor service
+    	this.putDoctor = function (data) {
+    		return $http.post('/submitDoctor', data);
+    	};
+    
+    	//search Patient service
+    	this.searchPatient = function (data) {
+    		return $http({
+    			method: "GET",
+    			url: "/searchPatient",
+    			params: {
+    				data: data
+    			}
+    		})
+    	}
+    
+    	// get all the patient
+    	this.getPatient = function (data) {
+    		return $http({
+    			method: "GET",
+    			url: '/getPatient',
+    			data: data,
+    			cache: true
+    		})
+    	};
+    
+    	//delete particular patient based on firstname and lastname
+    	this.deletePatient = function (data) {
+    		return $http({
+    			method: "DELETE",
+    			url: "/deletePatient",
+    			params: {
+    				firstName: data.firstName,
+    				lastName: data.lastName
+    			}
+    		})
+    	}
+    
+    	// register new patient service
+    	this.putPatient = function (data) {
+    		return $http.post('/submitPatient', data);
+    	};
+    
+    	// patietn upate service
+    	this.updatePatient = function (data) {
+    		return $http.post('/updatePatient', JSON.stringify(data));
+    	}
+    
+    	this.setCurrentDoctor = function (value) {
+    		currentDoctor.firstName = value.firstName;
+    		currentDoctor.lastName = value.lastName;
+    	}
+    
+    	this.getCurrentDoctor = function () {
+    		return currentDoctor;
+    	}
+    
+    	this.setPatientDetails = function (value) {
+    		patientDetails = value;
+    	}
+    
+    	this.getPatientDetails = function () {
+    		return patientDetails;
+    	}
+    
+    }]);
+    
+    //filter for pagination
+    app.filter('startFrom', function () {
+    	return function (input, start) {
+    		if (!input || !input.length) {
+    			return;
+    		}
+    		start = +start; //parse to int
+    		return input.slice(start);
+    	}
+    });

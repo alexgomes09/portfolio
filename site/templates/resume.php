@@ -3,12 +3,22 @@
 <main class="main" role="main">
 	<div class="text">
 		<div class="attributes">
-			<h3><i class="icon-lightbulb"></i>Skills</h3>
+			<h3><i class="icon-lightbulb"></i>Development Skills</h3>
 			<div>
 				<?php foreach($page->skills()->yaml() as $skills): ?>
 					<progress value="<?php echo $skills['range'] ?>" max="100"></progress>
 					<span><?php echo $skills['skill'] ?></span>
 					<span class="percentage"><?php echo $skills['range']?>%</span>
+				<?php endforeach ?>
+			</div>
+		</div>
+		<div class="attributes">
+			<h3><i class="icon-lightbulb"></i>Design Skills</h3>
+			<div>
+				<?php foreach($page->designskills()->yaml() as $designskills): ?>
+					<progress value="<?php echo $designskills['range'] ?>" max="100"></progress>
+					<span><?php echo $designskills['skill'] ?></span>
+					<span class="percentage"><?php echo $designskills['range']?>%</span>
 				<?php endforeach ?>
 			</div>
 		</div>

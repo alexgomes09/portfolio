@@ -226,9 +226,11 @@ nav{
   display: none;
   width: 100%;
   margin: 5px;
+  padding-bottom:25px;
   img{
     display: inline-block;
     width: 100%;
+    border: 1px solid black; 
   }
 }
 .filter{
@@ -255,6 +257,7 @@ nav{
   #Container .mix{
     width: 258px;
     margin:4px;
+    padding-bottom:25px;
   }
 }
 
@@ -529,7 +532,7 @@ progress::-moz-progress-bar {
     tr{
       float: right;
       td{
-        padding: 25px;
+        padding: 19px;
         display: inline-block;
         a{
           display: inline-block;

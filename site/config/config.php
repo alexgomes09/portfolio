@@ -19,18 +19,6 @@ for more information: http://getkirby.com/license
 c::set('license', 'put your license key here');
 c::set('markdown.extra',true);
 
-/**
- * Mandril mail driver
- */
-email::$services['mandrill'] = function($email) {
-
-
-
-	if(empty($email->options['key']))    throw new Error('Missing Mandrill API key');
-
-
-
-};
 /*
 
 ---------------------------------------

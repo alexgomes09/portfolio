@@ -11,6 +11,7 @@
   <meta name="description" content="<?php echo $site->description()->html() ?>">
   <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
+  <?php echo css('assets/css/magic.min.css') ?>
   <?php echo css('assets/css/bootstrap.min.css') ?>
   <?php echo css('panel/assets/css/fontawesome.css') ?>
   <?php echo css('assets/css/fontello.css') ?>
@@ -18,9 +19,8 @@
   <?php echo css('assets/css/main.css') ?>
 </head>
 <body>
-
   <header class="header cf" role="banner">
-    <div class="logo">
+    <div class="logo magictime tinUpIn">
       <a href="<?php echo url() ?>">
         <img src="<?php echo url('assets/images/avatar.png') ?>" alt="<?php echo $site->title()->html() ?>" />
       </a>

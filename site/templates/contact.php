@@ -8,17 +8,17 @@
 				<table>
 					<tr>
 						<td><i class="fa fa-user"></i></td>
-						<td><input type="text" name="name" placeholder="Name" value="Chadni" required></td>
+						<td><input type="text" name="name" placeholder="Name" value="" required></td>
 						<td><span id="content-error-name"></span></td>
 					</tr>
 					<tr>
 						<td><i class="fa fa-envelope"></i></td>
-						<td><input type="email" name="email" placeholder="Email" value="chadnigomes30@yahoo.com" required></td>
+						<td><input type="email" name="email" placeholder="Email" value="" required></td>
 						<td><span id="content-error-email"></span></td>
 					</tr>
 					<tr>
 						<td><i class="fa fa-pencil"></i></td>
-						<td><textarea placeholder="Message" name="body" required>HELLO THERE</textarea></td>
+						<td><textarea placeholder="Message" name="body" required></textarea></td>
 						<td><span id="content-error-body"></span></td>
 					</tr>
 					<tr>

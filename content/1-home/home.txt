@@ -6,8 +6,9 @@ Text:
 
 #**About me**
 
-####I am Alex Gomes. I am a software engineer <br>and graphic designer from Toronto, Ontario. </br></br>
+####I am Alex Gomes. I am <span class="rotate-word"></span>
 
+<br>
 Engineering is a big part of my life. I always believe that there is something extraordinary behind every ordinary concepts. I just can't use a software  without analyzing the architecture of the software. I am highly passionate to learn new programming languages.    I love creativity and like to take challenges. I write code everyday to make various interaction happen with my code. As I believe practice makes perfect. 
 
 I recently graduated from Software Engineering and Interactive Gaming program at Centennial College. I am proficient to work on many  programming languages in various platforms. I am also constantly updating my skills to make sure I am well prepared for any kind of projects. </br>And even If I am not prepared, I do not worry to learn quickly on my own as I am very adaptable person.  I've chosen my career that I'm either going to be a software engineer (long term) or web developer (short term).

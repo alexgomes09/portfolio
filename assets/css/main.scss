@@ -81,11 +81,19 @@ a:hover {
 /* Site
 -------------------------------------------------- */
 html {
-  height: 101%;
+  min-height: 100%;
   font-size: 1em;
   font-family: "Source Sans Pro", sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  background: #fcfff4;
+  background: -moz-linear-gradient(top, #fcfff4 0%, #d1dbc9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(100%,#d1dbc9));
+  background: -webkit-linear-gradient(top, #fcfff4 0%,#d1dbc9 100%);
+  background: -o-linear-gradient(top, #fcfff4 0%,#d1dbc9 100%);
+  background: -ms-linear-gradient(top, #fcfff4 0%,#d1dbc9 100%);
+  background: linear-gradient(to bottom, #fcfff4 0%,#d1dbc9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#d1dbc9',GradientType=0 );
 }
 body {
   font-family: "Source Sans Pro", sans-serif;
@@ -94,8 +102,8 @@ body {
   line-height: 1.5em;
   padding: 1em 1.5em 1.5em 1.5em;
   max-width:60em;
-  background: #fff;
-  color: #222;
+  color: black;
+  background: transparent center center;
 }
 
 
@@ -117,7 +125,6 @@ body {
 }
 .logo img {
   width:6em;
-  border-radius: 50%;
 }
 
 
@@ -150,6 +157,7 @@ nav{
   border-top: 1px solid #ddd;
   font-weight: 600;
   text-transform: uppercase;
+  text-shadow: 1px 1px 1px lightgray;
 }
 
 .submenu {
@@ -230,7 +238,7 @@ nav{
   img{
     display: inline-block;
     width: 100%;
-    border: 1px solid black; 
+    border: 3px solid black; 
   }
 }
 .filter{
@@ -268,6 +276,7 @@ h1 {
   line-height: 1.25em;
   font-weight: bolder;
   margin-bottom: .5em;
+  text-shadow: 0px 2px 2px #BDBDBD;
 }
 h2 {
   font-size: 1.5em;
@@ -347,7 +356,7 @@ span.percentage {
 }
 
 progress {
-  background-color: #f3f3f3;
+  background-color: #D8D8D8;
   border: 0;
   height: 4px;
   width: 100%;
@@ -367,20 +376,24 @@ progress::-moz-progress-bar {
 .attributes h3{
   margin: 1em 0px;
   font-weight: 300;
+  text-shadow: 0px 2px 2px #BDBDBD;
 }
 .attributes >div{
   padding-left: 3em;
 }
 .attributes h3 > i{
-  border:4px solid #AFD1DF;
+  border:4px solid #329ad1;
   margin-right: 10px;
   border-radius: 100%;
   padding: 5px;
   font-size: 24px;
   color: #A9A9A9;
 }
+.attributes hr{
+  background-color: black;
+}
 .attributes hr:last-child{
-  display: none
+    display: none;
 }
 
 /* Single Project info and details
@@ -415,7 +428,8 @@ progress::-moz-progress-bar {
 #projectDetails {
   margin-bottom: 25px;
   img{
-    margin: 0 auto; 
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px gray;
   }
   .tab-content{
     .tab-pane{
@@ -460,6 +474,9 @@ progress::-moz-progress-bar {
 .teaser li {
   margin-bottom: 1.5em;
   list-style: none;
+  img{
+    box-shadow: 0 2px 8px gray;
+  }
 }
 @media screen and (min-width: 50em) {
   .teaser li {
@@ -554,6 +571,7 @@ progress::-moz-progress-bar {
 .map{
   width: 100%;
   height: 400px;
+  box-shadow: 0px 5px 10px gray;
 }
 
 /* Next/Prev nav
@@ -589,6 +607,7 @@ progress::-moz-progress-bar {
   background-color:black;
   padding: 7px;
   color: white;
+  box-shadow: 4px 4px 5px lightgray;
 }
 
 

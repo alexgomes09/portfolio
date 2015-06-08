@@ -20,7 +20,7 @@
 </head>
 <body>
   <header class="header cf" role="banner">
-    <div class="logo magictime tinUpIn">
+    <div class="logo">
       <a href="<?php echo url() ?>">
         <img src="<?php echo url('assets/images/avatar.png') ?>" alt="<?php echo $site->title()->html() ?>" />
       </a>

@@ -16,11 +16,11 @@ $(document).ready(function() {
         $(this).addClass('hvr-ripple-out');
     });
     $('.menu li a').mouseout(function(){
-     $(this).removeClass('hvr-ripple-out');
- })
+       $(this).removeClass('hvr-ripple-out');
+   })
 
     //rotate word at home page functionality
-    var rotateWord = ["a Web Developer","a Desktop Application Developer","an Android Developer","a Graphic Designer"];
+    var rotateWord = ["a Web Developer","a Desktop Application Developer","a Full-Stack Web Developer","an Android Developer","a Graphic Designer"];
     var counter = 0;
     $('.rotate-word').html("a Software Engineer");
 

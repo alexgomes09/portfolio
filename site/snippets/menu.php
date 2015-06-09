@@ -9,7 +9,7 @@
       </a>
 
       <?php if($p->hasVisibleChildren()): ?>
-      <ul class="submenu">
+      <ul class="submenu" style="display: none">    <!-- display hide to note show sub menu / take out style to show submenu -->
         <?php foreach($p->children()->visible() as $p): ?>
         <li>
           <a href="<?php echo $p->url() ?>"><?php echo $p->title()->html() ?></a>

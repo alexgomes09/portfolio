@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>Duck Hunter</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="css/playScreen.css" rel="stylesheet" type="text/css"/>
+        <link href="css/animate.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+				
+        <div id="playScreen">
+
+            <canvas id="playScreenCanvas"></canvas>
+            <div id="playGround">
+            </div>
+            <div id="playGrass">
+                <img src="images/grass.png">
+            </div>
+            <div id="playTree">
+                <img src="images/tree2.png">
+            </div>
+            <div class="duckSprite" id="duckSprite"></div>
+            <div id="score">Score: <span id="updatedScore"></span> </div>
+            <div id="reputation">Reputation: <span id="updatedReputation"></span></div>
+            <div id="badRep">You've bad reputation <br>police after you for <br>killing too many ducks<br>Run to not get locked up in jail</div>
+        </div>
+        <div id="storyScreen">
+            <div id="story">Not every hunting trip into the deer woods ends with a deer,
+                but hunters always come home with a new story. Because stories are everywhere in the wild.
+                Some are short, others are epic. It was the first week of July, 2014. It’s a beautiful sunny weather.
+                Flowers’ blooming on his yard. Kachamoto is ready with his Browning Semi-Auto Grade Rifle.
+                He takes so much care of this long range rifle. As this was the only rifle he has which was licensed under his dad’s name.
+                Kachamoto took his car and headed northeastern Ontario, place known as Georgian Bay. Great place for hunting deer.
+                At the time he reached the spot he noticed a deer. He set his rifle, crawled and took better position. He took first shot.
+                Alas, it is missed. Deer noticed and started running. Kachamoto loaded the rifle again and took his second shot.
+                All of a sudden it’s all silent. Kachamoto stood up and went to pick that deer.
+                By the time he reached to the point he found no deer but a dead duck. He realized then he actually hunted a duck not a deer.
+                While deer was running he also missed the second shot and it killed a duck.
+                Now that kachamoto is on spot and all other duck’s realized their one and only child was killed.
+                They are now coming to take revenge.
+                Now you were magically teleported on that spot and your job is to save Kachamoto by shooting incoming ducks.
+                <img src="images/play.png" onclick="SwitchScreenToPlay()">
+            </div>
+            <canvas id="storyScreenCanvas"></canvas>
+        </div>
+
+        <div id="splashscreen">
+            <div id="angryDuck">
+                <img src="images/angryDuck.png">
+            </div>
+            <div id="deadBird">
+                <img src="images/deadBird.png">
+            </div>
+            <div id="tree2">
+                <img src="images/tree2.png">
+            </div>
+            <div id="playButton">
+                <img src="images/play.png" onclick="SwitchScreenToPlay()">
+            </div>
+            <div id="storyButton">
+                <img src="images/story.png" onclick="SwitchScreenToStory()">
+            </div>
+
+            <div id="tree1">
+                <img src="images/tree1.png">
+            </div>
+
+            <div id="grass">
+                <img src="images/grass.png">
+            </div>
+            <div id="ground">
+            </div>
+        </div>
+
+        <div id="feedback"></div>
+
+        <script type="text/javascript" src="Script/jquery-2.1.1.js"></script>
+        <script type="text/javascript" src="Script/motio.js"></script>
+        <script type="text/javascript" src="Script/play.js"></script>
+        <script type="text/javascript" src="Script/story.js"></script>
+        <script>
+            $("#playTree img").addClass('animated swing');
+
+        </script>
+    </body>
+</html>

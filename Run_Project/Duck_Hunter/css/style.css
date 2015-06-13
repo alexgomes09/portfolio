@@ -1,0 +1,89 @@
+﻿body {
+    background-color: black;
+    margin: 0 auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#splashscreen{
+    width: 800px;
+    height: 600px;
+    background-image: url("../images/background.png");
+    margin: 0 auto;
+    display: block;
+}
+#playButton{
+    width: 203px;
+    height: 49px;
+    padding: 25px 0 0 25px;
+}
+#playButton img{
+    cursor: pointer;
+}
+#storyButton{
+    width: 203px;
+    height: 49px;
+    padding:25px 0 0 25px;
+}
+#storyButton img{
+    cursor: pointer;
+}
+#angryDuck{
+    width: 234px;
+    height: 308px;
+    float: right;
+}
+#deadBird{
+    width: 151px;
+    height: 137px;
+    float: right;
+    padding: 100px 20px 0 0;
+}
+
+#tree1{
+    position: relative;
+    top: 144px;
+    left: 45px;
+    width: 169px;
+    height: 250px;
+    z-index: 10;
+}
+#tree2{
+    float: right;
+    clear: both;
+}
+#grass{
+    position: absolute;
+    top: 455px;
+}
+#ground{
+    background-image: url("../images/ground.png");
+    width: 800px;
+    height:66px;
+    position: absolute;
+    top: 535px;
+}
+#playScreen {
+    height: 600px;
+    width: 800px;
+    margin: 0 auto;
+    display: none;
+}
+#storyScreen{
+    height: 600px;
+    width: 800px;
+    margin: 0 auto;
+    display: none;
+    background-color: black;
+    overflow: hidden;
+	border:1px solid red;
+}
+#splashscreen{
+    display: block;
+}
+#feedback{
+    color: red;
+}

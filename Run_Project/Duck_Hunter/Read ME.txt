@@ -1,0 +1,31 @@
+========= Sprites credit =========
+
+Tree = http://www.furnituredecoratingideas.com/images/2426-name-free-vector-abstract-trees.jpg
+
+Angry Duck = http://www.teamclipart.com/wp-content/uploads/symbiostock_rf_content/1428-aggressive-duck-with-crossed-arms-cartoon-vector-illustration.jpg
+
+Dead bird = http://image.shutterstock.com/display_pic_with_logo/265489/113922928/stock-vector-cartoon-dead-blue-bird-vector-illustration-with-simple-gradients-all-in-a-single-layer-113922928.jpg
+
+Button = https://dribbble.com/shots/563023-Diablo-Button
+
+Bird Sprite Sheet = http://www.kadrmasconcepts.com/blog/wp-content/uploads/2011/05/robin.png
+
+
+========= Instruction ==========
+
+use your mouse to kill duck
+
+REFRESH the page to go to splash screen
+
+
+
+Note : I had some different plan for this game but since I was busy with midterm and other projects.
+I didn't get enough time to work on it.
+
+Things I was planning to work on
+
+1. rotate bird frames while bird flys opposite direction
+2. make the grass animate (create some wind effect)
+3. Add few different type of birds so that player accidently kill different birds. and it would make
+	dramatic change on reputation or some negative score;
+

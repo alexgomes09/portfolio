@@ -1,0 +1,81 @@
+#playScreen{
+    background-image: url("../images/background.png");
+    width: 800px;
+    height: 600px;
+    cursor:url("../images/gun.png"), auto;
+    overflow: hidden;
+}
+#playGround{
+    background-image: url("../images/ground.png");
+    width: 800px;
+    height:66px;
+    position: absolute;
+    top: 535px;
+    z-index: 1;
+}
+#playGrass{
+    position: absolute;
+    top: 430px;
+    overflow: hidden;
+}
+#playTree{
+    float: right;
+    position: relative;
+    top: -310px;
+    left: -83px;
+}
+#reputation{
+    position: relative;
+    top: -780px;
+    left: 12px;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+#badRep{
+    position: relative;
+    top: -747px;
+    left: 221px;
+    font-size: 2.5em;
+    text-align: center;
+    color: darkred;
+    width: 374px;
+    display: none;
+}
+.duckSprite{
+    width: 120px;
+    height: 157px;
+    background-image: url('../images/duckSprite2.png');
+    position: relative;
+    top: -611px;
+    left: -6px;
+}
+.dead{
+    -webkit-animation: spin 0.2s infinite linear;
+    animation:spin 0.2s infinite linear;
+    -moz-animation:spin 0.2s infinite linear;
+    -o-animation:spin 0.2s infinite linear;
+}
+
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -o-transform:rotateY(0deg);
+    }
+    100% {
+        -webkit-transform: rotateY(-360deg);
+        -moz-transform: rotateY(-360deg);
+        -o-transform: rotateY(-360deg);
+    }
+}
+
+#score{
+    color: orange;
+    font-family: Arial;
+    font-size: 1.2em;
+    position: relative;
+    top: -750px;
+    left: 670px;
+
+}

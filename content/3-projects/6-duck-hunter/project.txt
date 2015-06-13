@@ -1,0 +1,38 @@
+Title: Duck Hunter
+
+----
+
+Year: 2014
+
+----
+
+Sidenote: 
+
+----
+
+Projectlocation: http://alexgomes.tk/Run_Project/Duck_Hunter/
+
+----
+
+Sourcecode: 
+
+----
+
+Download: duck_hunter.zip
+
+----
+
+Tags: Javascript,HTML5,CSS3
+
+----
+
+Text: 
+
+A simple HTML5 game that I was assigned to create at one of my web development course during academic year.
+(image: pic1.jpg)
+(image: pic3.jpg) 
+(image: pic2.jpg)
+
+----
+
+Codesnippet: 

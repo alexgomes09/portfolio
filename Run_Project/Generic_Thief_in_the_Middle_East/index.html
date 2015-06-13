@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Gaming Final Project</title>
+    <link href="style/style.css" type="text/css" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div id="game"></div>
+<div id="loading">
+		<img src="assets/loading.gif" alt="Loading..." />
+</div>
+<div id="splashScreen">
+    <span id="play_text" onclick="">Play</span>
+    <img src="assets/button.png" width="150" height="50" onclick="startGame()" id="play">
+    <form action="" id="difficulty">
+        <span>Choose Difficulty</span><br>
+        <input type="radio" name="difficulty" value="easy">Easy<br>
+        <input type="radio" name="difficulty" value="medium">Medium<br>
+        <input type="radio" name="difficulty" value="hard">Hard
+    </form>
+</div>
+<div id="scoreBoard">
+    <span style="color: yellow" id="scoreBoardText">Score Board</span><br>
+    <br>
+    <span id="score"></span><br>
+    <span id="tank_life"></span><br>
+    <span id="star_collected"></span><br><br>
+    <span class="info">Hit Tank = 1pt</span>
+    <span class="info">Collect Stars = 20pt</span>
+    <span class="info">Stop Bombs = 2pt</span><br><br>
+</div>
+<div id="previousScore">
+    <span style="color: yellow">Previous Data</span>
+    <br><br>
+    <span id="pScore"></span><br>
+    <span id="pStar_collected"></span><br><br>
+</div>
+<div id="instruction" align="center">
+    <h1 style="color: rgb(0,242,255); border: 2px dashed lightblue;width: 300px">Generic Thief in the Middle East</h1>
+    <h3><span style="color: orange">Instruction:</span> Use <span style="color: yellow">A D</span>  to control player and <span style="color: yellow">W</span> for jump<br>
+    Use <span style="color: yellow">Mouse</span> to shoot and aim</h3>
+    <h3><span style="color: orange">Goal: </span> Kill the Tank</h3>
+</div>
+
+<script type="text/javascript" src="script/jquery1.11.js"></script>
+<script type="text/javascript" src="script/phaser.min.js"></script>
+<script type="text/javascript" src="script/splashScreen.js" id="splashScript"></script>
+<script type="text/javascript" src="" id="gameScript"></script>
+</body>
+</html>

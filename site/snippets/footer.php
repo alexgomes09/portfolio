@@ -4,7 +4,7 @@
   		<?php echo $site->copyright()->kirbytext() ?>
   	</div>
   </footer>
-
+	
   <?php echo js('panel/assets/js/vendors/jquery.js') ?>
   <script src="https://maps.googleapis.com/maps/api/js"></script>
   <?php echo js('assets/js/respond.min.js') ?>

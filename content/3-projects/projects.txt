@@ -11,7 +11,7 @@ Projthumb:
 - 
   category: Node Angular
   link: projects/web-irc
-  thumb: webchatapp.jpg
+  thumb: webirc.jpg
 - 
   category: Wordpress
   link: projects/lala-skin-essentials
@@ -32,6 +32,11 @@ Projthumb:
   category: Wordpress
   link: projects/mind-body-and-soul
   thumb: mind_body_soul.jpg
+- 
+  category: Games
+  link: >
+    projects/generic-thief-in-the-middle-east
+  thumb: generic_thief.jpg
 
 ----
 

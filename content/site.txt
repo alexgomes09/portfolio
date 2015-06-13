@@ -2,15 +2,15 @@ Title: Alex Gomes
 
 ----
 
-Author: Alex Gomes
+Author: Alex Gomes - alex.09hg@gmail.com
 
 ----
 
-Description: This is Kirby's Starterkit.
+Description: Alex's portfolio contains Node, Angular, C#,  Web Development, Java project that he has completed in his academic year and on his spare time.
 
 ----
 
-Keywords: Kirby,CMS,file-based
+Keywords: Portfolio,Resume,Developer portfolio,programmer portfolio,Alex,Gomes,Alex Gomes
 
 ----
 

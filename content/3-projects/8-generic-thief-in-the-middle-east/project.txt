@@ -1,0 +1,39 @@
+Title: Generic Thief In The Middle East
+
+----
+
+Year: 2014
+
+----
+
+Sidenote: 
+
+----
+
+Projectlocation: http://alexgomes.tk/Run_Project/Generic_Thief_in_the_Middle_East/
+
+----
+
+Sourcecode: 
+
+----
+
+Download: 
+
+----
+
+Tags: Phaser framework,HTML5,Canvas,CSS3,Javascript
+
+----
+
+Text: 
+
+This game was built on Phaser framework. Phaser is javascript based game engine. It was a final project for one of my academic year. A thief sneaked into one of the middle eastern country and military cops are now chasing him around. You play as the character of thief and shoot tanks. The higher the difficulty longer it takes to defeat the tank. Project contained group of 2 members.   
+
+(image: pic2.jpg)
+
+(image: pic1.jpg)
+
+----
+
+Codesnippet: 
